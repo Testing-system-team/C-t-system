@@ -1,0 +1,73 @@
+name: MSBuild
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: .
+
+  # Configuration type to build.
+  # You can convert this to a build matrix if you need coverage of multiple configuration types.
+  # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+  BUILD_CONFIGURATION: Release
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3.3.0
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.3.1
+
+    - name: Restore NuGet packages
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Artifact upload
+      uses: actions/upload-artifact@v3.1.2
+      with:
+          name: Something-catalog (${{env.BUILD_CONFIGURATION}})
+          path: |
+              x64/${{env.BUILD_CONFIGURATION}}
+              !x64/${{env.BUILD_CONFIGURATION}}/*_i.c
+              !x64/${{env.BUILD_CONFIGURATION}}/*_p.c
+              !x64/${{env.BUILD_CONFIGURATION}}/*_h.h
+              !x64/${{env.BUILD_CONFIGURATION}}/*.ilk
+              !x64/${{env.BUILD_CONFIGURATION}}/*.meta
+              !x64/${{env.BUILD_CONFIGURATION}}/*.obj
+              !x64/${{env.BUILD_CONFIGURATION}}/*.iobj
+              !x64/${{env.BUILD_CONFIGURATION}}/*.pch
+              !x64/${{env.BUILD_CONFIGURATION}}/*.pdb
+              !x64/${{env.BUILD_CONFIGURATION}}/*.ipdb
+              !x64/${{env.BUILD_CONFIGURATION}}/*.pgc
+              !x64/${{env.BUILD_CONFIGURATION}}/*.pgd
+              !x64/${{env.BUILD_CONFIGURATION}}/*.rsp
+              !x64/${{env.BUILD_CONFIGURATION}}/*.sbr
+              !x64/${{env.BUILD_CONFIGURATION}}/*.tlb
+              !x64/${{env.BUILD_CONFIGURATION}}/*.tli
+              !x64/${{env.BUILD_CONFIGURATION}}/*.tlh
+              !x64/${{env.BUILD_CONFIGURATION}}/*.tmp
+              !x64/${{env.BUILD_CONFIGURATION}}/*.tmp_proj
+              !x64/${{env.BUILD_CONFIGURATION}}/*_wpftmp.csproj
+              !x64/${{env.BUILD_CONFIGURATION}}/*.log
+              !x64/${{env.BUILD_CONFIGURATION}}/*.vspscc
+              !x64/${{env.BUILD_CONFIGURATION}}/*.vssscc
+              !x64/${{env.BUILD_CONFIGURATION}}/.builds
+              !x64/${{env.BUILD_CONFIGURATION}}/*.pidb
+              !x64/${{env.BUILD_CONFIGURATION}}/*.svclog
+              !x64/${{env.BUILD_CONFIGURATION}}/*.scc
