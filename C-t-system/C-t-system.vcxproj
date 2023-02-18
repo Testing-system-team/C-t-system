@@ -24,6 +24,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header.h" />
     <ClInclude Include="include\ID-System\ID.h" />
     <ClInclude Include="include\ID-System\System.h" />
   </ItemGroup>
