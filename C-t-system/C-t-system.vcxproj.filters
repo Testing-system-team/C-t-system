@@ -13,10 +13,30 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\ID-Sytem">
+      <UniqueIdentifier>{f973d703-8568-4b63-a431-c24b70133b4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ID-System">
+      <UniqueIdentifier>{40443563-20c2-4a1b-8257-a7bfa3d5dcdb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\ID-System\ID.cpp">
+      <Filter>Исходные файлы\ID-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ID-System\System.cpp">
+      <Filter>Исходные файлы\ID-System</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\ID-System\ID.h">
+      <Filter>Файлы заголовков\ID-Sytem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ID-System\System.h">
+      <Filter>Файлы заголовков\ID-Sytem</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
