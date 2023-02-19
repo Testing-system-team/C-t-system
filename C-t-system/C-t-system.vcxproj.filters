@@ -30,6 +30,12 @@
     <ClCompile Include="src\ID-System\System.cpp">
       <Filter>Исходные файлы\ID-System</Filter>
     </ClCompile>
+    <ClCompile Include="Question.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ID-System\ID.h">
@@ -37,6 +43,15 @@
     </ClInclude>
     <ClInclude Include="include\ID-System\System.h">
       <Filter>Файлы заголовков\ID-Sytem</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Header.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Question.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
