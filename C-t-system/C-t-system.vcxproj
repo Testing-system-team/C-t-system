@@ -19,18 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Question.cpp" />
     <ClCompile Include="src\ID-System\ID.cpp" />
     <ClCompile Include="src\ID-System\System.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Header.h" />
     <ClInclude Include="include\ID-System\ID.h" />
     <ClInclude Include="include\ID-System\System.h" />
-    <ClInclude Include="Question.h" />
-    <ClInclude Include="Test.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
