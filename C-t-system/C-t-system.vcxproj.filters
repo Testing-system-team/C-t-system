@@ -22,6 +22,12 @@
     <Filter Include="Файлы заголовков\ID-System\Template implementation">
       <UniqueIdentifier>{ce36fc15-1c5d-4599-8405-9930c6a167b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Security">
+      <UniqueIdentifier>{af7838f1-c312-4947-b218-192db25de685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Security">
+      <UniqueIdentifier>{8a62104a-b452-45a6-84e5-5bab8b347fcc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -29,6 +35,9 @@
     </ClCompile>
     <ClCompile Include="src\ID-System\ID_System.cpp">
       <Filter>Исходные файлы\ID-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Security\HMAC_Generator.cpp">
+      <Filter>Исходные файлы\Security</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,5 +53,11 @@
     <ClInclude Include="include\ID-System\Template implementation\T_ID_System.hpp">
       <Filter>Файлы заголовков\ID-System\Template implementation</Filter>
     </ClInclude>
+    <ClInclude Include="include\Security\HMAC_Generator.h">
+      <Filter>Файлы заголовков\Security</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
