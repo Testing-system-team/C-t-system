@@ -46,5 +46,5 @@ bool HMAC_Generator::compare_HMAC(std::string pass, std::string hash)
 	auto digest = std::make_unique<unsigned char[]>(keyLen);
 	PKCS5_PBKDF2_HMAC(pass.c_str(), pass.size(), salt.c_str(), salt.size(),
 		iterations, EVP_sha256(), keyLen, digest.get());
-	return std::basic_string<unsigned char>(digest.get(), keyLen) == hex_to_dec(hash);
+	return dec_to_hex(std::basic_string<unsigned char>(digest.get(), keyLen)) == hash;
 }
