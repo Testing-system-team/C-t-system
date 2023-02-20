@@ -13,10 +13,36 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\ID-System">
+      <UniqueIdentifier>{40443563-20c2-4a1b-8257-a7bfa3d5dcdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\ID-System">
+      <UniqueIdentifier>{f973d703-8568-4b63-a431-c24b70133b4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\ID-System\Template implementation">
+      <UniqueIdentifier>{ce36fc15-1c5d-4599-8405-9930c6a167b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C-t-system.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\ID-System\ID_System.cpp">
+      <Filter>Исходные файлы\ID-System</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Header.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ID-System\ID_System.h">
+      <Filter>Файлы заголовков\ID-System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ID-System\Template implementation\T_ID.hpp">
+      <Filter>Файлы заголовков\ID-System\Template implementation</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ID-System\Template implementation\T_ID_System.hpp">
+      <Filter>Файлы заголовков\ID-System\Template implementation</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

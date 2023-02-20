@@ -41,7 +41,7 @@ jobs:
     - name: Artifact upload
       uses: actions/upload-artifact@v3.1.2
       with:
-          name: Something-catalog (${{env.BUILD_CONFIGURATION}})
+          name: C-t-system (${{env.BUILD_CONFIGURATION}})
           path: |
               x64/${{env.BUILD_CONFIGURATION}}
               !x64/${{env.BUILD_CONFIGURATION}}/*_i.c
