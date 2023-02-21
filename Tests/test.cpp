@@ -93,54 +93,7 @@ void test::displayResult()
 	std::cout << u8"\nÂ³äñîòîê ïğàâèëüíèõ â³äïîâ³äåé - " << std::setprecision(1) 
 		<< percentage << "%\n";
 	;
-	if (percentage <= 100 and percentage >= 95)
-	{
-		mark = 12;
-	}
-	else if (percentage >= 85 and percentage <= 94)
-	{
-		mark = 11;
-	}
-	else if (percentage >= 80 and percentage <= 84)
-	{
-		mark = 10;
-	}
-	else if (percentage >= 70 and percentage <= 79)
-	{
-		mark = 9;
-	}
-	else if (percentage >= 65 and percentage <= 69)
-	{
-		mark = 8;
-	}
-	else if (percentage >= 60 and percentage <= 64)
-	{
-		mark = 7;
-	}
-	else if (percentage >= 50 and percentage <= 59)
-	{
-		mark = 6;
-	}
-	else if (percentage >= 47 and percentage <= 49)
-	{
-		mark = 5;
-	}
-	else if (percentage >= 40 and percentage <= 46)
-	{
-		mark = 4;
-	}
-	else if (percentage >= 20 and percentage <= 39)
-	{
-		mark = 3;
-	}
-	else if (percentage >= 3 and percentage <= 19)
-	{
-		mark = 2;
-	}
-	else if (percentage == 0)
-	{
-		mark = 1;
-	}
+	mark = ((float)result / questions.size()) * 12;
 	std::cout << u8"Îö³íêà - " << mark << "\n";
 
 }
