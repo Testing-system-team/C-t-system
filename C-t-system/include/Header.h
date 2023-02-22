@@ -1,5 +1,9 @@
 #pragma once
 
+//
+// Глобальное подключение библиотек
+//
+
 #include <iostream>
 #include <Windows.h>
 #include <string>
@@ -8,3 +12,4 @@
 #include <vector>
 #include <algorithm>
 #include <openssl/evp.h>
+// // //
