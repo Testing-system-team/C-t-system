@@ -1,6 +1,8 @@
 #include "Header.h"
 #include "Security/HMAC_Generator.h"
 
+using namespace Security;
+
 std::string HMAC_Generator::dec_to_hex(const std::basic_string<unsigned char> dec) const
 {
 	std::string hex;

@@ -56,6 +56,9 @@
     <ClInclude Include="include\Security\HMAC_Generator.h">
       <Filter>Файлы заголовков\Security</Filter>
     </ClInclude>
+    <ClInclude Include="include\Security\Security.h">
+      <Filter>Файлы заголовков\Security</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
