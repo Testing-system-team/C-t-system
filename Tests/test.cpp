@@ -51,7 +51,7 @@ void test::startTest()
 				{
 					std::cout << u8"Оберіть існуючий варіант(a/b/c): "; std::cin >> ans;
 				}
-				system("pause");
+				
 				switch (ans)
 				{
 				case 'a':
@@ -80,8 +80,8 @@ void test::startTest()
 			{
 				result++;
 			}
-
 		}
+		displayResult();
 	}
 }
 
@@ -98,14 +98,29 @@ void test::displayResult()
 
 }
 
-void test::loadTest()
+
+
+int test::getResult()
 {
+	return result;
 }
 
-void test::saveTest()
+int test::getMark()
 {
+	return mark;
 }
 
-void test::saveResult()
+double test::getPercentage()
 {
+	return percentage;
 }
+
+std::vector<question> test::getQuestions()
+{
+	return questions;
+}
+
+
+
+
+

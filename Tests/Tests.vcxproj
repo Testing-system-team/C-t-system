@@ -127,13 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="category.cpp" />
     <ClCompile Include="question.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="category.h" />
     <ClInclude Include="question.h" />
     <ClInclude Include="test.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Tests.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,7 +9,7 @@ class test
 	int numOfQuestions;
 	int result;
 	int mark;
-	float percentage;
+	double percentage;
 public:
 	
 	test();
@@ -26,9 +26,11 @@ public:
 	
 
 	void displayResult();
-	void loadTest();
-	void saveTest();
-	void saveResult();
+
+	int getResult();
+	int getMark();
+	double getPercentage();
+	std::vector<question> getQuestions();
 
 
 
