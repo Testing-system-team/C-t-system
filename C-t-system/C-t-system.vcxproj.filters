@@ -28,6 +28,18 @@
     <Filter Include="Файлы заголовков\Security">
       <UniqueIdentifier>{8a62104a-b452-45a6-84e5-5bab8b347fcc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\User-System">
+      <UniqueIdentifier>{3129a3ac-c3d9-4077-8e3b-08180b46aa4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Auth-System">
+      <UniqueIdentifier>{ca710b48-6afb-48cd-a6f6-200351da4fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\User-System">
+      <UniqueIdentifier>{dbf9f86c-dd43-4cfb-a851-baec4a2db0a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Auth-System">
+      <UniqueIdentifier>{73d0df97-cd36-4f2f-b3db-d5c53e44eb76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -38,6 +50,30 @@
     </ClCompile>
     <ClCompile Include="src\Security\HMAC_Generator.cpp">
       <Filter>Исходные файлы\Security</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Auth-System\Authorization.cpp">
+      <Filter>Исходные файлы\Auth-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\User-System\DataManager.cpp">
+      <Filter>Исходные файлы\User-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\User-System\Permissions.cpp">
+      <Filter>Исходные файлы\User-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\User-System\Student.cpp">
+      <Filter>Исходные файлы\User-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\User-System\StudentList.cpp">
+      <Filter>Исходные файлы\User-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\User-System\User.cpp">
+      <Filter>Исходные файлы\User-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\User-System\User_System.cpp">
+      <Filter>Исходные файлы\User-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\User-System\Admin.cpp">
+      <Filter>Исходные файлы\User-System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +94,30 @@
     </ClInclude>
     <ClInclude Include="include\Security\Security.h">
       <Filter>Файлы заголовков\Security</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Auth-System\Authorization.h">
+      <Filter>Файлы заголовков\Auth-System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\User-System\Admin.h">
+      <Filter>Файлы заголовков\User-System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\User-System\DataManager.h">
+      <Filter>Файлы заголовков\User-System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\User-System\Permissions.h">
+      <Filter>Файлы заголовков\User-System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\User-System\Student.h">
+      <Filter>Файлы заголовков\User-System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\User-System\StudentList.h">
+      <Filter>Файлы заголовков\User-System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\User-System\User.h">
+      <Filter>Файлы заголовков\User-System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\User-System\User_System.h">
+      <Filter>Файлы заголовков\User-System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

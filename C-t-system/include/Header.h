@@ -12,4 +12,11 @@
 #include <vector>
 #include <algorithm>
 #include <openssl/evp.h>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
+#include <boost/foreach.hpp>
+#include <filesystem>
+#include <memory>
 // // //
+
+namespace pt = boost::property_tree;
