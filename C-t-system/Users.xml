@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Users>
+	<Admin>
+		<ID>1</ID>
+		<loginHash>f3a7d0785cd94eccb9ca086fabdf642cc66927860be77575c8115fb3955b5d6c</loginHash>
+		<passwordHash>01315bb3e6ad4508ffe743f5db54a868609cc456c5a4799697fc3b5391f09e70</passwordHash>
+	</Admin>
+	<Student>
+		<ID>2</ID>
+		<name>d</name>
+		<surname>d</surname>
+		<patronymic>d</patronymic>
+		<adress>d</adress>
+		<phoneNumber>d</phoneNumber>
+		<loginHash>eded69574eaddc45491218ace832b0a2f9eb7b7c576776aeadf89407b77386b8</loginHash>
+		<passwordHash>23f48949e7185c1b0da7fb9581b918dc2f1f53960965982e6c292a43cebb2309</passwordHash>
+	</Student>
+	<Student>
+		<ID>3</ID>
+		<name>f</name>
+		<surname>f</surname>
+		<patronymic>f</patronymic>
+		<adress>f</adress>
+		<phoneNumber>f</phoneNumber>
+		<loginHash>4db8b1f3e160f03aa7af68e33e017a834d39cc011c8c8c8690d90efbd7ad3b6c</loginHash>
+		<passwordHash>1d61912f58d6aaac6cb79e837d1871ff866969f3f50c42a14ef9417cd7d3f514</passwordHash>
+	</Student>
+</Users>

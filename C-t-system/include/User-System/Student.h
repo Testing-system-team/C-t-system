@@ -1,10 +1,15 @@
 #pragma once
 #include "User-System/User.h"
+#include "ID-System/ID_System.h"
+#include "Security/HMAC_Generator.h"
 
 namespace User_System
 {
-	class Student : public User
+	class Student : public User, public ID_System::ID<Student>
 	{
+		static Security::HMAC_Generator loginHashGen;
+		static Security::HMAC_Generator passHashGen;
+
 		std::string name;
 		std::string surname;
 		std::string patronymic;
@@ -17,5 +22,8 @@ namespace User_System
 		void display() const;
 		std::string GetName() const;
 		operator pt::ptree() const override;
+
+		static const Security::HMAC_Generator getLoginHashGen();
+		static const Security::HMAC_Generator getPassHashGen();
 	};
 }

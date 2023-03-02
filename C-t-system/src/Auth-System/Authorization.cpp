@@ -76,7 +76,7 @@ void Auth_System::Authorization::studentRegistration()
 	std::getline(std::cin, password);
 	managerPtr->addUser(std::make_unique<User_System::Student>(
 		name, surname, patronymic, adress, phone, login, password));
-	currentUser = &*(managerPtr->getCatalog().GetStudents().end() - 1);
+	currentUser = (managerPtr->getCatalog().GetStudents().end() - 1)->get();
 }
 
 void Auth_System::Authorization::login()
@@ -92,20 +92,34 @@ void Auth_System::Authorization::login()
 			std::cout << "\nuser not found->\n";
 	} while (!managerPtr->FindLogin(login));
 
-	if (managerPtr->getAdmin()->login == login) currentUser = managerPtr->getAdmin().get();
+	if (User_System::Admin::getLoginHashGen().compare_HMAC(login, managerPtr->getAdmin()->login)) currentUser = managerPtr->getAdmin().get();
 	else
-	currentUser = &*std::find_if(managerPtr->getCatalog().GetStudents().begin(), managerPtr->getCatalog().GetStudents().end(),
-		[login](auto student)
-		{
-			return student.login == login;
-		});
+		currentUser = std::find_if(managerPtr->getCatalog().GetStudents().begin(), managerPtr->getCatalog().GetStudents().end(),
+			[login](auto& student)
+			{
+				return User_System::Student::getLoginHashGen().compare_HMAC(login, student->login);
+			})->get();
 
-	do
+	if (auto result = dynamic_cast<User_System::Student*>(currentUser))
 	{
-		std::cout << "\npassword-> ";
-		std::getline(std::cin, password);
-		if (password != currentUser->password)
-			std::cout << "\nwrong password> ";
-	} while (password != currentUser->password);
-	std::cout << "\nYou have been successfully authorised\n";
+		do
+		{
+			std::cout << "\npassword-> ";
+			std::getline(std::cin, password);
+			if (!result->getPassHashGen().compare_HMAC(password, result->password))
+				std::cout << "\nwrong password>\n";
+		} while (!result->getPassHashGen().compare_HMAC(password, result->password));
+		std::cout << "\nYou have been successfully authorised\n";
+	}
+	else if (auto result = dynamic_cast<User_System::Admin*>(currentUser))
+	{
+		do
+		{
+			std::cout << "\npassword-> ";
+			std::getline(std::cin, password);
+			if (!result->getPassHashGen().compare_HMAC(password, result->password))
+				std::cout << "\nwrong password>\n";
+		} while (!result->getPassHashGen().compare_HMAC(password, result->password));
+		std::cout << "\nYou have been successfully authorised\n";
+	}
 }

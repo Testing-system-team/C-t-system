@@ -5,14 +5,14 @@ namespace User_System
 {
 	class StudentList
 	{
-		std::vector<Student> students;
+		std::vector<std::unique_ptr<Student>> students;
 	public:
-		void AddStudent(const Student& s);
+		void AddStudent(std::unique_ptr<Student> s);
 		bool LoginExist(std::string login)const;
 		void display()const;
 		void displayByLogin(std::string& login)const;
-		std::vector<Student>& GetStudents();
-		std::vector<Student>::const_iterator begin() const;
-		std::vector<Student>::const_iterator end() const;
+		std::vector<std::unique_ptr<Student>>& GetStudents();
+		std::vector<std::unique_ptr<Student>>::const_iterator begin() const;
+		std::vector<std::unique_ptr<Student>>::const_iterator end() const;
 	};
 }

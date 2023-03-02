@@ -3,13 +3,20 @@
 
 using namespace User_System;
 
-Student::Student() : User("", "", 0, 0, 1, 0), name(""), surname(""), patronymic(""), adress(""), phoneNumber("") {}
+Security::HMAC_Generator Student::loginHashGen { std::basic_string<unsigned char>(reinterpret_cast<const unsigned char*>("Student\0Login"), 14) };
+Security::HMAC_Generator Student::passHashGen { std::basic_string<unsigned char>(reinterpret_cast<const unsigned char*>("Student\0Password"), 17) };
+
+Student::Student() : ID(0), User("", "", 0, 0, 1, 0), name(""), surname(""), patronymic(""), adress(""), phoneNumber("") {}
 
 Student::Student(std::string name, std::string surname, std::string patronymic, std::string adress, std::string phoneNumber, std::string login, std::string password)
-	: User(login, password, 0, 0, 1, 0), name(name),surname(surname),patronymic(patronymic),adress(adress),phoneNumber(phoneNumber)
+	: User(loginHashGen.generate_HMAC(login),
+		passHashGen.generate_HMAC(password),
+		0, 0, 1, 0), 
+	name(name),surname(surname),patronymic(patronymic),adress(adress),phoneNumber(phoneNumber)
 {}
 
 Student::Student(const pt::ptree& s) : 
+	ID(s.get<int>("ID")),
 	User(s.get<std::string>("loginHash"), s.get<std::string>("passwordHash"), 0, 0, 1, 0),
 	name(s.get<std::string>("name")),
 	surname(s.get<std::string>("surname")),
@@ -32,16 +39,25 @@ std::string Student::GetName() const
 {
 	return name;
 }
+const Security::HMAC_Generator User_System::Student::getLoginHashGen()
+{
+	return loginHashGen;
+}
+const Security::HMAC_Generator User_System::Student::getPassHashGen()
+{
+	return passHashGen;
+}
 Student::operator pt::ptree()const
 {
 	pt::ptree stTags;
+	stTags.put("ID", id);
 	stTags.put("name", name);
 	stTags.put("surname", surname);
 	stTags.put("patronymic", patronymic);
 	stTags.put("adress", adress);
 	stTags.put("phoneNumber", phoneNumber);
-	stTags.put("loginHash", _login);
-	stTags.put("passwordHash", _password);
+	stTags.put("loginHash", login);
+	stTags.put("passwordHash", password);
 	return stTags;
 }
 //void Student::saveToFile(const Student& s)
