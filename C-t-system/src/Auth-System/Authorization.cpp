@@ -16,7 +16,7 @@ void Auth_System::Authorization::_firstLogin()
 	currentUser = managerPtr->getAdmin().get();
 }
 
-Auth_System::Authorization::Authorization(std::unique_ptr<User_System::DataManager>& managerPtr)
+Auth_System::Authorization::Authorization(User_System::DataManager* managerPtr)
 	: managerPtr(managerPtr), currentUser(nullptr)
 {}
 

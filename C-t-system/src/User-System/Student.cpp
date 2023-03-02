@@ -1,5 +1,6 @@
 #include "Header.h"
 #include "User-System/Student.h"
+#include "User-System/User_System.h"
 
 using namespace User_System;
 
@@ -27,13 +28,15 @@ Student::Student(const pt::ptree& s) :
 
 void Student::display() const
 {
-	std::cout << name << "\n";
-	std::cout << surname << "\n";
-	std::cout << patronymic << "\n";
-	std::cout << adress << "\n";
-	std::cout << phoneNumber << "\n";
-	std::cout << _login << "\n";
-	std::cout << _password << "\n";
+	std::cout 
+		<< convertTypeName(typeid(*this).name()) << ":\n"
+		<< name << "\n"
+		<< surname << "\n"
+		<< patronymic << "\n"
+		<< adress << "\n"
+		<< phoneNumber << "\n"
+		<< _login << "\n"
+		<< _password << "\n";
 }
 std::string Student::GetName() const
 {

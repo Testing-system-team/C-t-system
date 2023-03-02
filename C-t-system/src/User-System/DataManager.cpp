@@ -11,15 +11,22 @@ DataManager::DataManager() : fileName("Users.xml") { loadData(); }
 
 void DataManager::display() const
 {
+	admin->Display();
 	studentCatalog.display();
 }
-void DataManager::displayByName(std::string login) const
+void DataManager::displayByLogin(std::string login) const
 {
-	studentCatalog.displayByLogin(login);
+	if (Admin::getLoginHashGen().compare_HMAC(login, admin->login))
+		admin->Display();
+	else
+		studentCatalog.displayByLogin(login);
 }
 
 void DataManager::loadData()
 {
+	admin.reset();
+	studentCatalog.GetStudents().clear();
+
 	if (std::filesystem::exists(fileName))
 	{
 		pt::ptree tree;
