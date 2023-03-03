@@ -27,9 +27,9 @@ namespace Security
 		// // //
 
 		// Генерация хэша
-		std::string generate_HMAC(std::string pass);
+		std::string generate_HMAC(std::string pass) const;
 
 		// Сравнение хэша с паролем
-		bool compare_HMAC(std::string pass, std::string hash);
+		bool compare_HMAC(std::string pass, std::string hash) const;
 	};
 }

@@ -5,14 +5,30 @@ namespace User_System
 {
 	class StudentList
 	{
-		std::vector<Student> students;
+		// Аттрибут
+		std::vector<std::unique_ptr<Student>> students;
 	public:
-		void AddStudent(const Student& s);
+		// Добавлет студента в кталог
+		void AddStudent(std::unique_ptr<Student> s);
+
+		// Проверка на существование логина среди какталога студентов
 		bool LoginExist(std::string login)const;
+
+		// Выводит всех студентов
 		void display()const;
+
+		// Вывод студента по логину
 		void displayByLogin(std::string& login)const;
-		std::vector<Student>& GetStudents();
-		std::vector<Student>::const_iterator begin() const;
-		std::vector<Student>::const_iterator end() const;
+
+		// Геттер вектора студентов
+		std::vector<std::unique_ptr<Student>>& GetStudents();
+
+		//
+		// Методы begin и end
+		//
+
+		std::vector<std::unique_ptr<Student>>::const_iterator begin() const;
+		std::vector<std::unique_ptr<Student>>::const_iterator end() const;
+		// // //
 	};
 }
