@@ -5,13 +5,25 @@ namespace Auth_System
 {
 	class Authorization
 	{
+		// Текущий авторизованный пользователь
 		User_System::User* currentUser;
-		std::unique_ptr<User_System::DataManager>& managerPtr;
+
+		// Указатель на меннеджер данных
+		User_System::DataManager* managerPtr;
+
+		// Регистрация администратора
 		void _firstLogin();
 	public:
-		Authorization(std::unique_ptr<User_System::DataManager>& managerPtr);
+		// Конструктор
+		Authorization(User_System::DataManager* managerPtr);
+
+		// Открывает меню авторизации
 		void open();
+
+		// Регистрация студента
 		void studentRegistration();
+
+		// Вход
 		void login();
 	};
 }

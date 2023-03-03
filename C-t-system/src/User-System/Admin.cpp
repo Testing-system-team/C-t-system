@@ -1,53 +1,71 @@
 #include "Header.h"
 #include "User-System/Admin.h"
-#include "User-System/DataManager.h"
+#include "User-System/User_System.h"
 
 using namespace User_System;
 
-Admin::Admin() : User("", "", 1, 1, 0, 1) {}
+Security::HMAC_Generator Admin::loginHashGen { std::basic_string<unsigned char>(reinterpret_cast<const unsigned char*>("Admin\0Login"), 11), 4096, 32 };
+Security::HMAC_Generator Admin::passHashGen { std::basic_string<unsigned char>(reinterpret_cast<const unsigned char*>("Admin\0Password"), 14), 4096, 32 };
 
-Admin::Admin(std::string login, std::string password) : User(login, password, 1, 1, 0, 1) {}
+Admin::Admin() : ID(0), User("", "", 1, 1, 0, 1) {}
 
-Admin::Admin(const pt::ptree& a) : User(a.get<std::string>("loginHash"), a.get<std::string>("passwordHash"), 1, 1, 0, 1) {}
+Admin::Admin(std::string login, std::string password) : 
+	User(loginHashGen.generate_HMAC(login),
+		passHashGen.generate_HMAC(password),
+		1, 1, 0, 1) 
+{}
+
+Admin::Admin(const pt::ptree& a) : 
+	ID(a.get<int>("ID")),
+	User(a.get<std::string>("loginHash"), a.get<std::string>("passwordHash"), 1, 1, 0, 1) 
+{}
 
 
 bool Admin::CheckLogin(Admin a,std::string login)
 {
-	if (a._login == _login)
-		return true;
-	return false;
+	return a._login == _login;
 }
 
-void Admin::CreateAdmin()
-{
-	pt::ptree tree;
-	do
-	{
-		std::cout << "\nEnter login for Admin-> ";
-		std::getline(std::cin, _login);
-
-		std::cout << "\nEnter password for Admin-> ";
-		std::getline(std::cin, _password);
-	} while (login == "" || password == "");
-	Admin newAdmin(_login, _password);
-	tree.add_child("List.admin", newAdmin);
-	
-	pt::write_xml("Admin.xml", tree);
-}
-
+//void Admin::CreateAdmin()
+//{
+//	pt::ptree tree;
+//	do
+//	{
+//		std::cout << "\nEnter login for Admin-> ";
+//		std::getline(std::cin, _login);
+//
+//		std::cout << "\nEnter password for Admin-> ";
+//		std::getline(std::cin, _password);
+//	} while (_login == "" || _password == "");
+//	Admin newAdmin(_login, _password);
+//	tree.add_child("Users." + convertTypeName(typeid(*this).name()), newAdmin);
+//	
+//	pt::write_xml("Users.xml", tree);
+//}
+//
 
 void Admin::Display() const
 {
-	std::cout << _login << "\n" << _password << "\n";
+	std::cout << convertTypeName(typeid(*this).name()) << ": " << _login << "\n" << _password << "\n";
+}
+
+const Security::HMAC_Generator User_System::Admin::getLoginHashGen()
+{
+	return loginHashGen;
+}
+
+const Security::HMAC_Generator User_System::Admin::getPassHashGen()
+{
+	return passHashGen;
 }
 
 //Admin Admin::loadData()
 //{
 //	pt::ptree tree;
 //	//2 зчитуємо дані із вказаного файла у дерево данних
-//	pt::read_xml("Admin.xml", tree); 
+//	pt::read_xml("Users.xml", tree); 
 //
-//	BOOST_FOREACH(auto & admins, tree.get_child("List"))
+//	BOOST_FOREACH(auto & admins, tree.get_child("Users"))
 //	{
 //	
 //		std::string login = admins.second.get<std::string>("loginHash");
@@ -71,7 +89,7 @@ void Admin::Display() const
 Admin::operator pt::ptree()const
 {
 	pt::ptree stTags;
-	
+	stTags.put("ID", id);
 	stTags.put("loginHash", _login);
 	stTags.put("passwordHash", _password);
 	return stTags;
@@ -79,7 +97,5 @@ Admin::operator pt::ptree()const
 
 bool Admin::CheckPassword(Admin a, std::string password)
 {
-	if (a._password == password)
-		return true;
-	return false;
+	return a._password == password;
 }

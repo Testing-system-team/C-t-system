@@ -2,7 +2,7 @@
 #include "Header.h"
 
 template<class T>
-ID_System::ID<T>::ID()
+ID_System::ID<T>::ID() throw(std::runtime_error)
 {
 	_typeName = typeid(T).name();
 
@@ -21,12 +21,12 @@ ID_System::ID<T>::ID()
 	else
 	{
 		_id = 0;
-		throw std::exception(u8"Класс ID не наследуется шаблонным именем");
+		throw std::runtime_error(u8"Класс ID не наследуется шаблонным именем");
 	}
 }
 
 template<class T>
-ID_System::ID<T>::ID(const int id)
+ID_System::ID<T>::ID(const int id) throw(std::runtime_error)
 {
 	_typeName = typeid(T).name();
 
@@ -40,7 +40,7 @@ ID_System::ID<T>::ID(const int id)
 			system_adress << result->second;
 			_id = 0;
 
-			throw std::exception(std::string
+			throw std::runtime_error(std::string
 			(
 				u8"ID(" + std::to_string(id) + u8") уже сущестует\n"
 				+ '\n'
@@ -66,7 +66,7 @@ ID_System::ID<T>::ID(const int id)
 	else
 	{
 		_id = 0;
-		throw std::exception(u8"Класс ID не наследуется шаблонным именем");
+		throw std::runtime_error(u8"Класс ID не наследуется шаблонным именем");
 	}
 }
 

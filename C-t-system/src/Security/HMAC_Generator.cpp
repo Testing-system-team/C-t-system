@@ -35,18 +35,18 @@ HMAC_Generator::HMAC_Generator(std::basic_string<unsigned char> salt, int iterat
 	: salt(salt), iterations(iterations), keyLen(keyLen)
 {}
 
-std::string HMAC_Generator::generate_HMAC(std::string pass)
+std::string HMAC_Generator::generate_HMAC(std::string pass) const
 {
 	auto digest = std::make_unique<unsigned char[]>(keyLen);
-	PKCS5_PBKDF2_HMAC(pass.c_str(), pass.size(), salt.c_str(), salt.size(),
+	PKCS5_PBKDF2_HMAC(pass.c_str(), pass.size() + 1, salt.c_str(), salt.size() + 1,
 		iterations, EVP_sha256(), keyLen, digest.get());
 	return dec_to_hex(std::basic_string<unsigned char>(digest.get(), keyLen));
 }
 
-bool HMAC_Generator::compare_HMAC(std::string pass, std::string hash)
+bool HMAC_Generator::compare_HMAC(std::string pass, std::string hash) const
 {
 	auto digest = std::make_unique<unsigned char[]>(keyLen);
-	PKCS5_PBKDF2_HMAC(pass.c_str(), pass.size(), salt.c_str(), salt.size(),
+	PKCS5_PBKDF2_HMAC(pass.c_str(), pass.size() + 1, salt.c_str(), salt.size() + 1,
 		iterations, EVP_sha256(), keyLen, digest.get());
 	return dec_to_hex(std::basic_string<unsigned char>(digest.get(), keyLen)) == hash;
 }
