@@ -19,10 +19,10 @@ public:
 		// Конструкторы
 		//
 
-		ID();
+		ID() throw(std::runtime_error);
 
 		// При 0 значении, ID не входит в систему
-		ID(const int id);
+		ID(const int id) throw(std::runtime_error);
 		// // //
 
 		// Деструктор
