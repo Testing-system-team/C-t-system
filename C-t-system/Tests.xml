@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Categories>
+	<Category>
+		<name>Математика</name>
+		<Tests>
+		    <test>
+				<name>Арифметика</name>
+				<questions>
+					<question>
+						<data> 2+2?</data>
+						<a>6</a>    <b>5</b>    <c>4</c>
+						<rightAnswer> 4</rightAnswer>
+					</question>
+				</questions>
+			</test>
+		</Tests>	
+	</Category>
+</Categories>

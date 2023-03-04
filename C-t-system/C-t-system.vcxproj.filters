@@ -40,6 +40,12 @@
     <Filter Include="Исходные файлы\Security">
       <UniqueIdentifier>{af7838f1-c312-4947-b218-192db25de685}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\Testing">
+      <UniqueIdentifier>{836ccf22-3b43-4f36-9fdc-9e7b6fab5429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Testing">
+      <UniqueIdentifier>{930436da-6165-4594-9a4a-00c41454485a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -74,6 +80,15 @@
     </ClCompile>
     <ClCompile Include="src\User-System\Admin.cpp">
       <Filter>Исходные файлы\User-System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Testing\category.cpp">
+      <Filter>Исходные файлы\Testing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Testing\question.cpp">
+      <Filter>Исходные файлы\Testing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Testing\test.cpp">
+      <Filter>Исходные файлы\Testing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,8 +134,22 @@
     <ClInclude Include="include\User-System\User_System.h">
       <Filter>Файлы заголовков\User-System</Filter>
     </ClInclude>
+    <ClInclude Include="include\Testing\category.h">
+      <Filter>Файлы заголовков\Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Testing\question.h">
+      <Filter>Файлы заголовков\Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Testing\test.h">
+      <Filter>Файлы заголовков\Testing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Tests.xml">
+      <Filter>Файлы ресурсов</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

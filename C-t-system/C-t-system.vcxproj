@@ -23,6 +23,9 @@
     <ClCompile Include="src\ID-System\ID_System.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Security\HMAC_Generator.cpp" />
+    <ClCompile Include="src\Testing\category.cpp" />
+    <ClCompile Include="src\Testing\question.cpp" />
+    <ClCompile Include="src\Testing\test.cpp" />
     <ClCompile Include="src\User-System\Admin.cpp" />
     <ClCompile Include="src\User-System\DataManager.cpp" />
     <ClCompile Include="src\User-System\Permissions.cpp" />
@@ -39,6 +42,9 @@
     <ClInclude Include="include\ID-System\Template implementation\T_ID_System.hpp" />
     <ClInclude Include="include\Security\HMAC_Generator.h" />
     <ClInclude Include="include\Security\Security.h" />
+    <ClInclude Include="include\Testing\category.h" />
+    <ClInclude Include="include\Testing\question.h" />
+    <ClInclude Include="include\Testing\test.h" />
     <ClInclude Include="include\User-System\Admin.h" />
     <ClInclude Include="include\User-System\DataManager.h" />
     <ClInclude Include="include\User-System\Permissions.h" />
@@ -49,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Tests.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
