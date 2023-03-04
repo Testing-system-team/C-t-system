@@ -17,6 +17,7 @@
 #include <boost/foreach.hpp>
 #include <filesystem>
 #include <memory>
+#include <iomanip>
 // // //
 
 namespace pt = boost::property_tree;

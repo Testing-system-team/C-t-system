@@ -1,5 +1,8 @@
-#include "Testing/category.h"
 #include "Header.h"
+#include "Testing/category.h"
+
+using namespace Testing;
+
 category::category(): name("-")
 {
 }

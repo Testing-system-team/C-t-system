@@ -1,38 +1,36 @@
 #pragma once
 #include "question.h"
-#include <vector>
 
-class test
+namespace Testing
 {
-	std::string name;
-	std::vector <question> questions;
-	int numOfQuestions;
-	int result;
-	int mark;
-	double percentage;
-public:
-	
-	test();
+	class test
+	{
+		std::string name;
+		std::vector <question> questions;
+		int numOfQuestions;
+		int result;
+		int mark;
+		double percentage;
+	public:
 
-	test(std::string name, int numOfQuestions);
+		test();
 
-
-	void addQuestion(const question& q);
-
-
-	void display();
-
-	void startTest();
-	
-
-	void displayResult();
-
-	int getResult();
-	int getMark();
-	double getPercentage();
-	std::vector<question> & getQuestions();
+		test(std::string name, int numOfQuestions);
 
 
+		void addQuestion(const question& q);
 
-};
 
+		void display();
+
+		void startTest();
+
+
+		void displayResult();
+
+		int getResult();
+		int getMark();
+		double getPercentage();
+		std::vector<question>& getQuestions();
+	};
+}

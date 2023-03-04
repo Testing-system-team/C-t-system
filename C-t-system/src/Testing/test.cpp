@@ -1,6 +1,8 @@
-#include "Testing/test.h"
 #include "Header.h"
-#include <iomanip>
+#include "Testing/test.h"
+
+using namespace Testing;
+
 test::test() : name("-"), numOfQuestions(5), result(0), mark(0), percentage(0)
 {
 	for (int i = 0; i < numOfQuestions; i++)

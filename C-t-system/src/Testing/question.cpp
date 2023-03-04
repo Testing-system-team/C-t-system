@@ -1,6 +1,7 @@
-#include "Testing/question.h"
 #include "Header.h"
+#include "Testing/question.h"
 
+using namespace Testing;
 
 question::question() : data("question"), a("right"), b("wrong"), c("wrong"), rightAnswer("right") {}
 
