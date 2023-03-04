@@ -1,5 +1,5 @@
-#include "category.h"
-
+#include "Testing/category.h"
+#include "Header.h"
 category::category(): name("-")
 {
 }
@@ -17,7 +17,7 @@ void category::display()
 	}
 }
 
-std::vector<test> category::getTests()
+std::vector<test>& category::getTests()
 {
 	return tests;
 }

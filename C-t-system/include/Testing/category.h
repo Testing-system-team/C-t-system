@@ -8,6 +8,6 @@ public:
 	category();
 	category(std::string name);
 	void display();
-	std::vector<test> getTests();
+	std::vector<test>& getTests();
 };
 

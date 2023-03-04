@@ -1,5 +1,5 @@
-#include "question.h"
-
+#include "Testing/question.h"
+#include "Header.h"
 
 
 question::question() : data("question"), a("right"), b("wrong"), c("wrong"), rightAnswer("right") {}

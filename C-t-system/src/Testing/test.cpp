@@ -1,4 +1,5 @@
-#include "test.h"
+#include "Testing/test.h"
+#include "Header.h"
 #include <iomanip>
 test::test() : name("-"), numOfQuestions(5), result(0), mark(0), percentage(0)
 {
@@ -115,7 +116,7 @@ double test::getPercentage()
 	return percentage;
 }
 
-std::vector<question> test::getQuestions()
+std::vector<question>& test::getQuestions()
 {
 	return questions;
 }

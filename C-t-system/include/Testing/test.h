@@ -30,7 +30,7 @@ public:
 	int getResult();
 	int getMark();
 	double getPercentage();
-	std::vector<question> getQuestions();
+	std::vector<question> & getQuestions();
 
 
 
