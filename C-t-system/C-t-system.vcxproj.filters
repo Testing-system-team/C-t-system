@@ -67,11 +67,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="extern\include\Menu\Menu.h">
-      <Filter>Внешние файлы заголовков\Menu</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -166,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="include\Testing\test.h">
       <Filter>Файлы заголовков\Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\include\Menu\Menu.h">
+      <Filter>Внешние файлы заголовков\Menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -20,6 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="extern\src\Menu\Menu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="extern\include\Menu\Menu.h" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\Auth-System\Authorization.cpp" />
     <ClCompile Include="src\ID-System\ID_System.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -36,7 +41,6 @@
     <ClCompile Include="src\User-System\User_System.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="extern\include\Menu\Menu.h" />
     <ClInclude Include="include\Auth-System\Authorization.h" />
     <ClInclude Include="include\Header.h" />
     <ClInclude Include="include\ID-System\ID_System.h" />
