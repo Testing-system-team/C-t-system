@@ -18,6 +18,22 @@ test::test(std::string name, int numOfQuestions) : name(name), numOfQuestions(nu
 	}
 }
 
+Testing::test::operator Menu()
+{
+	int count = MultiByteToWideChar(CP_UTF8, 0, name.c_str(), name.length(), NULL, 0);
+	std::wstring wstr(count, 0);
+	MultiByteToWideChar(CP_UTF8, 0, name.c_str(), name.length(), &wstr[0], count);
+
+	Menu menu(wstr);
+	menu.exit_name = L"Выход";
+	menu.back_name = L"Назад";
+
+	menu[L"Показать"] = std::bind(&test::display, this);
+	menu[L"Пройти тест"] = std::bind(&test::startTest, this);
+
+	return menu;
+}
+
 void test::addQuestion(const question& q)
 {
 	questions.push_back(q);
@@ -28,13 +44,14 @@ void test::display()
 {
 
 	std::cout << u8"\n Тест: " << name << " (" << questions.size() << u8" питань)\n";
+	system("pause");
 }
 void test::startTest()
 {
 	if (questions.size() == 0)
 	{
 		std::cout << u8"\n Тест не був завантажений\n";
-
+		system("pause");
 	}
 	else
 	{
@@ -98,7 +115,7 @@ void test::displayResult()
 	;
 	mark = ((float)result / questions.size()) * 12;
 	std::cout << u8"Оцінка - " << mark << "\n";
-
+	system("pause");
 }
 
 

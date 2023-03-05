@@ -18,6 +18,10 @@
 #include <filesystem>
 #include <memory>
 #include <iomanip>
+#include <functional>
+#include <tchar.h>
+#include <fcntl.h>
+#include <io.h>
 // // //
 
 namespace pt = boost::property_tree;

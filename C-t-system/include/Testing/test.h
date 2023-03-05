@@ -1,5 +1,6 @@
 #pragma once
 #include "question.h"
+#include "Menu/Menu.h"
 
 namespace Testing
 {
@@ -17,6 +18,7 @@ namespace Testing
 
 		test(std::string name, int numOfQuestions);
 
+		operator Menu();
 
 		void addQuestion(const question& q);
 
@@ -30,6 +32,7 @@ namespace Testing
 
 		int getResult();
 		int getMark();
+
 		double getPercentage();
 		std::vector<question>& getQuestions();
 	};

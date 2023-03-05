@@ -123,3 +123,8 @@ void Auth_System::Authorization::login()
 		std::cout << "\nYou have been successfully authorised\n";
 	}
 }
+
+User_System::User* Auth_System::Authorization::getCurrentUser()
+{
+	return currentUser;
+}
