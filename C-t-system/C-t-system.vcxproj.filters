@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Внешние исходные файлы">
+      <UniqueIdentifier>{cfeef571-88b9-4e3f-9f9f-a71b80538d20}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Внешние файлы заголовков">
+      <UniqueIdentifier>{c4ecc7ec-03c1-49ee-bbd1-b0adda42a22a}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
     <Filter Include="Исходные файлы">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -12,6 +20,12 @@
     <Filter Include="Файлы ресурсов">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Внешние исходные файлы\Menu">
+      <UniqueIdentifier>{e96cb2df-0c89-4137-919d-85e7c29a2ea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Внешние файлы заголовков\Menu">
+      <UniqueIdentifier>{08beee31-8f4e-4f0e-aa6e-b74b2b69bf21}</UniqueIdentifier>
     </Filter>
     <Filter Include="Исходные файлы\ID-System">
       <UniqueIdentifier>{40443563-20c2-4a1b-8257-a7bfa3d5dcdb}</UniqueIdentifier>
@@ -46,6 +60,16 @@
     <Filter Include="Исходные файлы\Testing">
       <UniqueIdentifier>{930436da-6165-4594-9a4a-00c41454485a}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="extern\src\Menu\Menu.cpp">
+      <Filter>Внешние исходные файлы\Menu</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="extern\include\Menu\Menu.h">
+      <Filter>Внешние файлы заголовков\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
