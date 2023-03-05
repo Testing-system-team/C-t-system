@@ -39,7 +39,7 @@ int main()
 		(*menuPtr)[L"Просмотр статистики"];
 	}
 
-	menuPtr->open(L"Ваш выбор");
+	menuPtr->open(L"Ваш выбор: ");
 }
 #else
 #include "Auth-System/Authorization.h"
@@ -76,7 +76,7 @@ int main()
 		(*menuPtr)[L"Просмотр статистики"];
 	}
 
-	menuPtr->open(L"Ваш выбор");
+	menuPtr->open(L"Ваш выбор: ");
 }
 #endif // 
 
