@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="extern\src\Menu\Menu.cpp" />
     <ClCompile Include="src\Auth-System\Authorization.cpp" />
     <ClCompile Include="src\ID-System\ID_System.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -35,6 +36,7 @@
     <ClCompile Include="src\User-System\User_System.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="extern\include\Menu\Menu.h" />
     <ClInclude Include="include\Auth-System\Authorization.h" />
     <ClInclude Include="include\Header.h" />
     <ClInclude Include="include\ID-System\ID_System.h" />
@@ -145,7 +147,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)extern\include;$(ProjectDir)include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>Header.h</PrecompiledHeaderFile>
@@ -163,7 +165,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)extern\include;$(ProjectDir)include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>Header.h</PrecompiledHeaderFile>

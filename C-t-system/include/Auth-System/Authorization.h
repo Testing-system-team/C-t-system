@@ -25,5 +25,8 @@ namespace Auth_System
 
 		// Вход
 		void login();
+
+		// Возвращает текущего пользователя
+		User_System::User* getCurrentUser();
 	};
 }
