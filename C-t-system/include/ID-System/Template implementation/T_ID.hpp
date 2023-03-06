@@ -2,7 +2,7 @@
 #include "Header.h"
 
 template<class T>
-ID_System::ID<T>::ID() throw(std::runtime_error)
+ID_System::ID<T>::ID()
 {
 	_typeName = typeid(T).name();
 
@@ -26,7 +26,7 @@ ID_System::ID<T>::ID() throw(std::runtime_error)
 }
 
 template<class T>
-ID_System::ID<T>::ID(const int id) throw(std::runtime_error)
+ID_System::ID<T>::ID(const int id)
 {
 	_typeName = typeid(T).name();
 

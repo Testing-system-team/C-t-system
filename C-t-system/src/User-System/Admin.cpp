@@ -47,6 +47,14 @@ bool Admin::CheckLogin(Admin a,std::string login)
 void Admin::Display() const
 {
 	std::cout << convertTypeName(typeid(*this).name()) << ": " << _login << "\n" << _password << "\n";
+	system("pause");
+}
+
+User_System::Admin::operator Menu()
+{
+	Menu menu(L"Администратор (" + std::to_wstring(id) + L')');
+	menu[L"Показать"] = std::bind(&Admin::Display, this);
+	return menu;
 }
 
 const Security::HMAC_Generator User_System::Admin::getLoginHashGen()

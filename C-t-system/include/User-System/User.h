@@ -1,5 +1,6 @@
 #pragma once
 #include "User-System/Permissions.h"
+#include "Menu/Menu.h"
 
 namespace User_System
 {
@@ -26,6 +27,9 @@ namespace User_System
 
 		// Преобразование в property_tree
 		virtual operator pt::ptree() const = 0;
+
+		// Преобразование в Menu
+		virtual operator Menu() = 0;
 
 		//
 		// Геттеры
