@@ -36,6 +36,9 @@ private:
 
 	//Очистка от пустых меню
 	void _clean(Menu& iter);
+protected:
+	// Указывает, закрыто или открыто меню
+	bool exit;
 public:
 	//
 	// Конструкторы
@@ -69,7 +72,8 @@ public:
 	//
 	// Преобразования
 	//
-	operator bool();
+	operator bool() const;
+	operator const std::vector<Menu>() const;
 
 	//
 	// Обычные методы
@@ -87,6 +91,8 @@ public:
 	virtual void display() const;
 
 	virtual void open(const tstring tchoice = _TEXT("Write your choice: "));
+
+	void close();
 
 	//
 	// Геттеры/cеттеры

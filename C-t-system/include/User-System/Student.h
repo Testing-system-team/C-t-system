@@ -43,6 +43,7 @@ namespace User_System
 
 		// Преобразование в property_tree
 		operator pt::ptree() const override;
+		operator Menu() override;
 
 		//
 		// Геттеры хэш генераторов

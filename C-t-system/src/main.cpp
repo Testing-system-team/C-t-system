@@ -24,7 +24,9 @@ int main()
 
 	if (currentUser->permissions.configureUsers)
 	{
-		(*menuPtr)[L"Конфигурация пользователей"];
+		managerPtr->name = L"Конфигурация пользователей";
+		managerPtr->exit_name = L"Назад";
+		(*menuPtr)[L"Конфигурация пользователей"] = std::bind(&User_System::DataManager::open, managerPtr.get(), L"Ваш выбор: ");
 	}
 	if (currentUser->permissions.configureTests)
 	{

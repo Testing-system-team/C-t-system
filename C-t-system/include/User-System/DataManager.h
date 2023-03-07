@@ -4,7 +4,7 @@
 
 namespace User_System
 {
-	class DataManager
+	class DataManager : public Menu
 	{
 		//
 		// Аттрибуты
@@ -38,10 +38,15 @@ namespace User_System
 		// Добавление пользователя в менеджер данных
 		void addUser(std::unique_ptr<User> user);
 
+		void deleteUserById(int id);
+
 		// Возвращает каталог студентов
 		StudentList& getCatalog();
 
 		// Возвращает админа
 		std::unique_ptr<User_System::Admin>& getAdmin();
+
+		// Открывает меню (немного костыль)
+		void open(tstring tchoice = _TEXT("Ваш выбор: ")) override;
 	};
 }

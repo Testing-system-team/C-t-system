@@ -37,10 +37,17 @@ void Student::display() const
 		<< phoneNumber << "\n"
 		<< _login << "\n"
 		<< _password << "\n";
+	system("pause");
 }
 std::string Student::GetName() const
 {
 	return name;
+}
+User_System::Student::operator Menu()
+{
+	Menu menu(L"Студент (" + std::to_wstring(id) + L')');
+	menu[L"Показать"] = std::bind(&Student::display, this);
+	return menu;
 }
 const Security::HMAC_Generator User_System::Student::getLoginHashGen()
 {

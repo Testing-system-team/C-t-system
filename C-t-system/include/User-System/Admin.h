@@ -39,7 +39,10 @@ namespace User_System
 		/*static Admin loadData();*/
 
 		// Преобразование в property_tree
-		operator pt::ptree()const;
+		operator pt::ptree() const override;
+		
+		// Преобразование в Menu
+		operator Menu() override;
 
 		//
 		// Геттеры хэш генераторов

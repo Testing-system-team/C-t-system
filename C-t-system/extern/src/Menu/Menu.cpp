@@ -22,7 +22,7 @@ Menu::Menu() : key(_TEXT("Exit")), dyn_function(nullptr), menu_list(), back_key(
 void Menu::_clean(Menu& iter)
 {
 	std::vector<Menu> temp;
-	for (auto subiter : iter.menu_list)
+	for (auto& subiter : iter.menu_list)
 	{
 		if (subiter.is_menu_list() && subiter.menu_list.size() > 1)
 			_clean(subiter);
@@ -46,9 +46,11 @@ Menu::Menu(const tstring name, const function_type &dyn_function) : key(name), d
 
 Menu::Menu(const tstring name, std::vector<Menu> menu_list) : key(name), dyn_function(nullptr), menu_list({ Menu() }), back_key(_TEXT("Back"))
 {
-	for (auto menu : menu_list)
+	for (auto iter = menu_list.begin() + 1;
+		iter != menu_list.end();
+		iter++)
 	{
-		this->menu_list.push_back(menu);
+		this->menu_list.push_back(*iter);
 		this->menu_list[menu_list.size()].exit_name = back_key;
 		this->menu_list[menu_list.size() - 1].back_key = back_key;
 	}
@@ -85,10 +87,12 @@ Menu& Menu::operator=(const std::vector<Menu> menu_list)
 {
 	this->dyn_function = nullptr;
 	while (this->menu_list.size() > 1) this->menu_list.pop_back();
-	for (auto menu : menu_list)
+	for (auto iter = menu_list.begin() + 1;
+		iter != menu_list.end();
+		iter++)
 	{
-		menu.exit_name = back_key;
-		this->menu_list.push_back(menu);
+		this->menu_list.push_back(*iter);
+		(this->menu_list.end() - 1)->exit_name = back_key;
 	}
 	return *this;
 }
@@ -142,7 +146,12 @@ Menu Menu::operator--()
 // Преобразования
 //
 
-Menu::operator bool() { return menu_list.size() > 1; }
+Menu::operator bool() const { return menu_list.size() > 1; }
+
+Menu::operator const std::vector<Menu>() const
+{
+	return menu_list;
+}
 
 //
 // Обычные методы
@@ -173,8 +182,7 @@ Menu Menu::pop_back()
 {
 	if (menu_list.size() > 1)
 	{
-		Menu temp(menu_list[menu_list.size() - 1].key); 
-		temp = menu_list[menu_list.size() - 1];
+		Menu temp(menu_list[menu_list.size() - 1]); 
 		menu_list.pop_back();
 		return temp;
 	}
@@ -215,7 +223,7 @@ void Menu::open(const tstring tchoice)
 {
 	_clean(*this);
 
-	bool exit = 0;
+	exit = 0;
 	do
 	{
 		#ifdef UNICODE
@@ -265,6 +273,11 @@ void Menu::open(const tstring tchoice)
 	} while (!exit);
 
 	system("cls");
+}
+
+void Menu::close()
+{
+	exit = 1;
 }
 
 //
