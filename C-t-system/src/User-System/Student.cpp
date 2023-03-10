@@ -49,6 +49,61 @@ User_System::Student::operator Menu()
 	menu[L"Показать"] = std::bind(&Student::display, this);
 	return menu;
 }
+void User_System::Student::ChangeName(std::string name_)
+{
+	name = name_;
+	std::cout << "Name was changed:\n";
+	display();
+	std::cout << "\n";
+}
+void User_System::Student::ChangeSurname(std::string surname_)
+{
+	surname = surname_;
+	std::cout << "Surname was changed:\n";
+	display();
+	std::cout << "\n";
+}
+void User_System::Student::ChangePatronymic(std::string patronymic_)
+{
+	patronymic = patronymic_;
+	std::cout << "Patronymic was changed:\n";
+	display();
+	std::cout << "\n";
+}
+
+void User_System::Student::ChangeAdress(std::string adress_)
+{
+	adress = adress_;
+	std::cout << "Adress was changed:\n";
+	display();
+	std::cout << "\n";
+}
+
+void User_System::Student::ChangePhone(std::string phone_)
+{
+	phoneNumber = phone_;
+	std::cout << "Phone was changed:\n";
+	display();
+	std::cout << "\n";
+}
+
+void User_System::Student::ChangeLogin(std::string login_)
+{
+	login = login_;
+	std::cout << "Login was changed:\n";
+	display();
+	std::cout << "\n";
+}
+
+void User_System::Student::ChangePassword(std::string password_)
+{
+	_password = password_;
+	std::cout << "Password was changed:\n";
+	display();
+	std::cout << "\n";
+}
+
+
 const Security::HMAC_Generator User_System::Student::getLoginHashGen()
 {
 	return loginHashGen;
@@ -57,6 +112,7 @@ const Security::HMAC_Generator User_System::Student::getPassHashGen()
 {
 	return passHashGen;
 }
+
 Student::operator pt::ptree()const
 {
 	pt::ptree stTags;

@@ -46,11 +46,23 @@ namespace User_System
 		operator Menu() override;
 
 		//
+		void ChangeName(std::string name_);
+		void ChangeSurname(std::string surname_);
+		void ChangePatronymic(std::string patronymic_);
+		void ChangeAdress(std::string adress_);
+		void ChangePhone(std::string phone_);
+		void ChangeLogin(std::string surname_);
+		void ChangePassword(std::string password_);
+		//
+
+		//
 		// Геттеры хэш генераторов
 		//
 
 		static const Security::HMAC_Generator getLoginHashGen();
 		static const Security::HMAC_Generator getPassHashGen();
 		// // //
+
+		
 	};
 }

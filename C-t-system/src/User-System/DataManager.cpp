@@ -47,6 +47,8 @@ void DataManager::loadData()
 	}
 }
 
+
+
 bool DataManager::FindLogin(std::string login) const
 {
 	pt::ptree tree;
@@ -191,7 +193,7 @@ void User_System::DataManager::open(tstring tchoice)
 				Menu temp = *users[choice - 1];
 				temp.exit_name = back_name;
 				temp.back_name = back_name;
-
+				#undef max
 				if (typeid(*users[choice - 1]) == typeid(Student))
 				{
 					temp[L"Удалить"] = [&]() 
@@ -199,8 +201,103 @@ void User_System::DataManager::open(tstring tchoice)
 							deleteUserById(dynamic_cast<Student*>(users[choice - 1])->id);
 							temp.close();
 						};
-				}
+					temp[L"Изменить Имя"] = [&]()
+					{
 
+						std::string newName;
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
+						std::cout << "Enter new Name-> ";
+						
+						std::getline(std::cin, newName);
+						studentCatalog.ChangeName(newName, dynamic_cast<Student*>(users[choice - 1])->id);
+						
+						int id = dynamic_cast<Student*>(users[choice - 1])->id;
+						
+						SaveName(id, newName);
+						system("pause");
+						temp.close();
+					};
+					temp[L"Изменить Фамилию"] = [&]()
+					{
+						std::string newSurname;
+						std::cout << "Enter new Surname-> ";
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
+						std::getline(std::cin, newSurname);
+						studentCatalog.ChangeSurname(newSurname, dynamic_cast<Student*>(users[choice - 1])->id);
+
+						int id = dynamic_cast<Student*>(users[choice - 1])->id;
+						SaveSurname(id, newSurname);
+						system("pause");
+						temp.close();
+					};
+					temp[L"Изменить Отчество"] = [&]()
+					{
+						std::string newPatronymic;
+						std::cout << "Enter new Patronymic-> ";
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
+						std::getline(std::cin, newPatronymic);
+						studentCatalog.ChangePatronymic(newPatronymic, dynamic_cast<Student*>(users[choice - 1])->id);
+						int id = dynamic_cast<Student*>(users[choice - 1])->id;
+						SavePatronymic(id, newPatronymic);
+						system("pause");
+						temp.close();
+					};
+					temp[L"Изменить Адрес"] = [&]()
+					{
+						std::string newAdress;
+						std::cout << "Enter new Adress-> ";
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
+						std::getline(std::cin, newAdress);
+						int id = dynamic_cast<Student*>(users[choice - 1])->id;
+						studentCatalog.ChangeAdress(newAdress, id);
+						
+						SaveAdress(id, newAdress);
+						system("pause");
+						temp.close();
+					};
+					temp[L"Изменить Номер Телефона"] = [&]()
+					{
+						std::string newPhone;
+						std::cout << "Enter new Phone-> ";
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
+						std::getline(std::cin, newPhone);
+						int id = dynamic_cast<Student*>(users[choice - 1])->id;
+						studentCatalog.ChangePhone(newPhone, id);
+
+						SavePhone(id, newPhone);
+						system("pause");
+						temp.close();
+					};
+					temp[L"Изменить Логин"] = [&]()
+					{
+						std::string newLogin;
+						std::cout << "Enter new Login-> ";
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
+						std::getline(std::cin, newLogin);
+						int id = dynamic_cast<Student*>(users[choice - 1])->id;
+						studentCatalog.ChangeLogin(newLogin, id);
+
+						SaveLogin(id, newLogin);
+						system("pause");
+						temp.close();
+					};
+					temp[L"Изменить Пароль"] = [&]()
+					{
+						std::string newPassword;
+						std::cout << "Enter new Password-> ";
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
+						std::getline(std::cin, newPassword);
+						int id = dynamic_cast<Student*>(users[choice - 1])->id;
+						studentCatalog.ChangePassword(newPassword, id);
+
+						SavePassword(id, newPassword);
+						system("pause");
+						temp.close();
+					};
+					
+				}
+				
+				
 				temp.open(tchoice);
 				// // //
 			}
@@ -222,4 +319,143 @@ void User_System::DataManager::open(tstring tchoice)
 			system("pause");
 		}
 	}
+}
+
+void DataManager::SaveName(int id,std::string newName)
+{
+	pt::ptree tree;
+	pt::read_xml(fileName, tree, pt::xml_parser::trim_whitespace);
+	pt::xml_writer_settings<std::string> settings('\t', 1);
+	BOOST_FOREACH(auto & user, tree.get_child("Users"))
+	{
+		int idXml = user.second.get<int>("ID");
+		if(idXml==id)
+		{
+			
+			//tree.put("name" , newName);
+			user.second.put("name", newName);
+			//user.second.put_value("name", newName);
+			break;
+		}
+	}
+	write_xml(fileName, tree, std::locale(), settings);
+	
+}
+
+void User_System::DataManager::SaveSurname(int id, std::string newSurname)
+{
+	pt::ptree tree;
+	pt::read_xml(fileName, tree, pt::xml_parser::trim_whitespace);
+	pt::xml_writer_settings<std::string> settings('\t', 1);
+	BOOST_FOREACH(auto & user, tree.get_child("Users"))
+	{
+		int idXml = user.second.get<int>("ID");
+		if (idXml == id)
+		{
+
+			//tree.put("name" , newName);
+			user.second.put("surname", newSurname);
+			//user.second.put_value("name", newName);
+			break;
+		}
+	}
+	write_xml(fileName, tree, std::locale(), settings);
+}
+
+void User_System::DataManager::SavePatronymic(int id, std::string newPatronymic)
+{
+	pt::ptree tree;
+	pt::read_xml(fileName, tree, pt::xml_parser::trim_whitespace);
+	pt::xml_writer_settings<std::string> settings('\t', 1);
+	BOOST_FOREACH(auto & user, tree.get_child("Users"))
+	{
+		int idXml = user.second.get<int>("ID");
+		if (idXml == id)
+		{
+
+			//tree.put("name" , newName);
+			user.second.put("patronymic", newPatronymic);
+			//user.second.put_value("name", newName);
+			break;
+		}
+	}
+	write_xml(fileName, tree, std::locale(), settings);
+}
+void User_System::DataManager::SaveAdress(int id, std::string newAdress)
+{
+	pt::ptree tree;
+	pt::read_xml(fileName, tree, pt::xml_parser::trim_whitespace);
+	pt::xml_writer_settings<std::string> settings('\t', 1);
+	BOOST_FOREACH(auto & user, tree.get_child("Users"))
+	{
+		int idXml = user.second.get<int>("ID");
+		if (idXml == id)
+		{
+
+			//tree.put("name" , newName);
+			user.second.put("adress", newAdress);
+			//user.second.put_value("name", newName);
+			break;
+		}
+	}
+	write_xml(fileName, tree, std::locale(), settings);
+}
+void User_System::DataManager::SavePhone(int id, std::string newPhone)
+{
+	pt::ptree tree;
+	pt::read_xml(fileName, tree, pt::xml_parser::trim_whitespace);
+	pt::xml_writer_settings<std::string> settings('\t', 1);
+	BOOST_FOREACH(auto & user, tree.get_child("Users"))
+	{
+		int idXml = user.second.get<int>("ID");
+		if (idXml == id)
+		{
+
+			//tree.put("name" , newName);
+			user.second.put("phoneNumber", newPhone);
+			//user.second.put_value("name", newName);
+			break;
+		}
+	}
+	write_xml(fileName, tree, std::locale(), settings);
+}
+void User_System::DataManager::SaveLogin(int id, std::string newLogin)
+{
+	pt::ptree tree;
+	pt::read_xml(fileName, tree, pt::xml_parser::trim_whitespace);
+	pt::xml_writer_settings<std::string> settings('\t', 1);
+	BOOST_FOREACH(auto & user, tree.get_child("Users"))
+	{
+		int idXml = user.second.get<int>("ID");
+		if (idXml == id)
+		{
+
+			//tree.put("name" , newName);
+			user.second.put("loginHash", Student::getLoginHashGen().generate_HMAC(newLogin));
+			
+			//user.second.put_value("name", newName);
+			break;
+		}
+	}
+	write_xml(fileName, tree, std::locale(), settings);
+}
+void User_System::DataManager::SavePassword(int id, std::string newPassword)
+{
+	pt::ptree tree;
+	pt::read_xml(fileName, tree, pt::xml_parser::trim_whitespace);
+	pt::xml_writer_settings<std::string> settings('\t', 1);
+	BOOST_FOREACH(auto & user, tree.get_child("Users"))
+	{
+		int idXml = user.second.get<int>("ID");
+		if (idXml == id)
+		{
+
+			//tree.put("name" , newName);
+			
+			user.second.put("passwordHash", Student::getPassHashGen().generate_HMAC(newPassword));
+			//user.second.put_value("name", newName);
+			break;
+		}
+	}
+	write_xml(fileName, tree, std::locale(), settings);
 }
