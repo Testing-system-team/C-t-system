@@ -48,7 +48,7 @@ namespace User_System
 		std::unique_ptr<User_System::Admin>& getAdmin();
 
 		// Открывает меню (немного костыль)
-		void open(tstring tchoice = _TEXT("Ваш выбор: ")) override;
+		void open(tstring tchoice = _TEXT("Ваш выбор: ")) noexcept override;
 
 		void SaveName(int id, std::string newName);
 		void SaveSurname(int id, std::string newSurname);

@@ -51,5 +51,13 @@ namespace User_System
 		static const Security::HMAC_Generator getLoginHashGen();
 		static const Security::HMAC_Generator getPassHashGen();
 		// // //
+
+		//
+		// Сеттеры для логина и пароля
+		//
+
+		void setLogin(const std::string login) override;
+		void setPassword(const std::string pass) override;
+		// // //
 	};
 }

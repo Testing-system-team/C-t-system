@@ -29,7 +29,7 @@ void User_System::User::setLogin(const std::string login)
 	_login = login;
 }
 
-void User_System::User::setPassword(const std::string login)
+void User_System::User::setPassword(const std::string pass)
 {
-	_password = password;
+	_password = pass;
 }

@@ -97,7 +97,7 @@ void User_System::Student::ChangeLogin(std::string login_)
 
 void User_System::Student::ChangePassword(std::string password_)
 {
-	_password = password_;
+	password = password_;
 	std::cout << "Password was changed:\n";
 	display();
 	std::cout << "\n";
@@ -111,6 +111,16 @@ const Security::HMAC_Generator User_System::Student::getLoginHashGen()
 const Security::HMAC_Generator User_System::Student::getPassHashGen()
 {
 	return passHashGen;
+}
+
+void User_System::Student::setLogin(const std::string login)
+{
+	_login = loginHashGen.generate_HMAC(login);
+}
+
+void User_System::Student::setPassword(const std::string pass)
+{
+	_password = passHashGen.generate_HMAC(pass);
 }
 
 Student::operator pt::ptree()const

@@ -137,7 +137,7 @@ std::unique_ptr<User_System::Admin>& User_System::DataManager::getAdmin()
 	return admin;
 }
 
-void User_System::DataManager::open(tstring tchoice)
+void User_System::DataManager::open(tstring tchoice) noexcept
 {
 	exit = 0;
 
@@ -179,7 +179,7 @@ void User_System::DataManager::open(tstring tchoice)
 
 		try
 		{
-			if (tMenu::tcout.fail())
+			if (tMenu::tcin.fail())
 				throw std::ios_base::failure("Bad input");
 			else if (choice < 0 || choice > users.size())
 				throw std::runtime_error("Bad choice");
@@ -190,18 +190,13 @@ void User_System::DataManager::open(tstring tchoice)
 				/* 
 					Тут добавляются дополнительные варианты меню, к меню пользователей
 				*/
-				Menu temp = *users[choice - 1];
-				temp.exit_name = back_name;
-				temp.back_name = back_name;
+				Menu userMenu = *users[choice - 1];
+				userMenu.exit_name = back_name;
+				userMenu.back_name = back_name;
 				#undef max
-				if (typeid(*users[choice - 1]) == typeid(Student))
+				if (auto user = dynamic_cast<Student*>(users[choice - 1]))
 				{
-					temp[L"Удалить"] = [&]() 
-						{ 
-							deleteUserById(dynamic_cast<Student*>(users[choice - 1])->id);
-							temp.close();
-						};
-					temp[L"Изменить Имя"] = [&]()
+					userMenu[L"Изменить"][L"Имя"] = [&]()
 					{
 
 						std::string newName;
@@ -209,96 +204,111 @@ void User_System::DataManager::open(tstring tchoice)
 						std::cout << "Enter new Name-> ";
 						
 						std::getline(std::cin, newName);
-						studentCatalog.ChangeName(newName, dynamic_cast<Student*>(users[choice - 1])->id);
+						user->ChangeName(newName);
 						
-						int id = dynamic_cast<Student*>(users[choice - 1])->id;
-						
-						SaveName(id, newName);
+						SaveName(user->id, newName);
 						system("pause");
-						temp.close();
 					};
-					temp[L"Изменить Фамилию"] = [&]()
+					userMenu[L"Изменить"][L"Фамилию"] = [&]()
 					{
 						std::string newSurname;
 						std::cout << "Enter new Surname-> ";
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newSurname);
-						studentCatalog.ChangeSurname(newSurname, dynamic_cast<Student*>(users[choice - 1])->id);
+						user->ChangeSurname(newSurname);
 
-						int id = dynamic_cast<Student*>(users[choice - 1])->id;
-						SaveSurname(id, newSurname);
+						SaveSurname(user->id, newSurname);
 						system("pause");
-						temp.close();
 					};
-					temp[L"Изменить Отчество"] = [&]()
+					userMenu[L"Изменить"][L"Отчество"] = [&]()
 					{
 						std::string newPatronymic;
 						std::cout << "Enter new Patronymic-> ";
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newPatronymic);
-						studentCatalog.ChangePatronymic(newPatronymic, dynamic_cast<Student*>(users[choice - 1])->id);
-						int id = dynamic_cast<Student*>(users[choice - 1])->id;
-						SavePatronymic(id, newPatronymic);
+						user->ChangePatronymic(newPatronymic);
+
+						SavePatronymic(user->id, newPatronymic);
 						system("pause");
-						temp.close();
 					};
-					temp[L"Изменить Адрес"] = [&]()
+					userMenu[L"Изменить"][L"Адрес"] = [&]()
 					{
 						std::string newAdress;
 						std::cout << "Enter new Adress-> ";
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newAdress);
-						int id = dynamic_cast<Student*>(users[choice - 1])->id;
-						studentCatalog.ChangeAdress(newAdress, id);
+						user->ChangeAdress(newAdress);
 						
-						SaveAdress(id, newAdress);
+						SaveAdress(user->id, newAdress);
 						system("pause");
-						temp.close();
 					};
-					temp[L"Изменить Номер Телефона"] = [&]()
+					userMenu[L"Изменить"][L"Номер Телефона"] = [&]()
 					{
 						std::string newPhone;
 						std::cout << "Enter new Phone-> ";
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newPhone);
-						int id = dynamic_cast<Student*>(users[choice - 1])->id;
-						studentCatalog.ChangePhone(newPhone, id);
+						user->ChangePhone(newPhone);
 
-						SavePhone(id, newPhone);
+						SavePhone(user->id, newPhone);
 						system("pause");
-						temp.close();
 					};
-					temp[L"Изменить Логин"] = [&]()
+					userMenu[L"Изменить"][L"Логин"] = [&]()
 					{
 						std::string newLogin;
 						std::cout << "Enter new Login-> ";
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newLogin);
-						int id = dynamic_cast<Student*>(users[choice - 1])->id;
-						studentCatalog.ChangeLogin(newLogin, id);
+						user->ChangeLogin(newLogin);
 
-						SaveLogin(id, newLogin);
+						SaveLogin(user->id, newLogin);
 						system("pause");
-						temp.close();
 					};
-					temp[L"Изменить Пароль"] = [&]()
+					userMenu[L"Изменить"][L"Пароль"] = [&]()
 					{
 						std::string newPassword;
 						std::cout << "Enter new Password-> ";
 						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newPassword);
-						int id = dynamic_cast<Student*>(users[choice - 1])->id;
-						studentCatalog.ChangePassword(newPassword, id);
+						user->ChangePassword(newPassword);
 
-						SavePassword(id, newPassword);
+						SavePassword(user->id, newPassword);
 						system("pause");
-						temp.close();
 					};
-					
+					userMenu[L"Удалить"] = [&]()
+					{
+						deleteUserById(user->id);
+						userMenu.close();
+					};
+				}
+				else if (auto user = dynamic_cast<Admin*>(users[choice - 1]))
+				{
+					userMenu[L"Изменить"][L"Логин"] = [&]()
+					{
+						std::string newLogin;
+						std::cout << "Enter new Login-> ";
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
+						std::getline(std::cin, newLogin);
+						user->login = newLogin;
+
+						SaveLogin(user->id, newLogin);
+						system("pause");
+					};
+					userMenu[L"Изменить"][L"Пароль"] = [&]()
+					{
+						std::string newPassword;
+						std::cout << "Enter new Password-> ";
+						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
+						std::getline(std::cin, newPassword);
+						user->password = newPassword;
+
+						SavePassword(user->id, newPassword);
+						system("pause");
+					};
 				}
 				
 				
-				temp.open(tchoice);
+				userMenu.open(tchoice);
 				// // //
 			}
 			else exit = 1;
@@ -431,7 +441,10 @@ void User_System::DataManager::SaveLogin(int id, std::string newLogin)
 		{
 
 			//tree.put("name" , newName);
-			user.second.put("loginHash", Student::getLoginHashGen().generate_HMAC(newLogin));
+			if (user.first == convertTypeName(typeid(Student).name()))
+				user.second.put("loginHash", Student::getLoginHashGen().generate_HMAC(newLogin));
+			else if (user.first == convertTypeName(typeid(Admin).name()))
+				user.second.put("loginHash", Admin::getLoginHashGen().generate_HMAC(newLogin));
 			
 			//user.second.put_value("name", newName);
 			break;
@@ -452,7 +465,10 @@ void User_System::DataManager::SavePassword(int id, std::string newPassword)
 
 			//tree.put("name" , newName);
 			
-			user.second.put("passwordHash", Student::getPassHashGen().generate_HMAC(newPassword));
+			if (user.first == convertTypeName(typeid(Student).name()))
+				user.second.put("passwordHash", Student::getPassHashGen().generate_HMAC(newPassword));
+			else if (user.first == convertTypeName(typeid(Admin).name()))
+				user.second.put("passwordHash", Admin::getPassHashGen().generate_HMAC(newPassword));
 			//user.second.put_value("name", newName);
 			break;
 		}
