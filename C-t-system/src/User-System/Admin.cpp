@@ -107,3 +107,13 @@ bool Admin::CheckPassword(Admin a, std::string password)
 {
 	return a._password == password;
 }
+
+void User_System::Admin::setLogin(const std::string login)
+{
+	_login = loginHashGen.generate_HMAC(login);
+}
+
+void User_System::Admin::setPassword(const std::string pass)
+{
+	_password = passHashGen.generate_HMAC(pass);
+}

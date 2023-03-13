@@ -44,8 +44,8 @@ namespace User_System
 		// Сеттеры
 		//
 
-		void setLogin(const std::string login);
-		void setPassword(const std::string login);
+		virtual void setLogin(const std::string login);
+		virtual void setPassword(const std::string pass);
 		// // //
 
 		//

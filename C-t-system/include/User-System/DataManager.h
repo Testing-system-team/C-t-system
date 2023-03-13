@@ -17,6 +17,7 @@ namespace User_System
 	public:
 		// Конструктор
 		DataManager();
+	
 
 		// Вывод на экран всех пользователей
 		void display()const;
@@ -47,6 +48,16 @@ namespace User_System
 		std::unique_ptr<User_System::Admin>& getAdmin();
 
 		// Открывает меню (немного костыль)
-		void open(tstring tchoice = _TEXT("Ваш выбор: ")) override;
+		void open(tstring tchoice = _TEXT("Ваш выбор: ")) noexcept override;
+
+		void SaveName(int id, std::string newName);
+		void SaveSurname(int id, std::string newSurname);
+		void SavePatronymic(int id, std::string newPatronymic);
+		void SaveAdress(int id, std::string newAdress);
+		void SavePhone(int id, std::string newPhone);
+		void SaveLogin(int id, std::string newLogin);
+		void SavePassword(int id, std::string newPassword);
 	};
+
+	
 }
