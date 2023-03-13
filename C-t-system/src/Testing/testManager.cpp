@@ -68,21 +68,6 @@ void Testing::testManager::saveData()
 	{
 		tree.add_child("Categories.Category", c);
 		
-		/*
-		for (test& t : categories[k].getTests())
-		{
-			tree.add_child("Categories.Category.Tests.test", t);
-			/*
-			* or (question& q : categories[k].getTests()[k1].getQuestions())
-			{
-				tree.add_child("Categories.Category.Tests.test.questions.question",q);
-				
-		     }
-			k1++;
-			
-		}
-		k++;
-		*/
 	}
 	pt::write_xml(fileName, tree);
 }
