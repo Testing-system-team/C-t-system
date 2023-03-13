@@ -5,9 +5,10 @@
 #include "User-System/User_System.h"
 #include "Security/HMAC_Generator.h"
 
+
 using namespace User_System;
 
-DataManager::DataManager() : Menu(L"Пользователи"), fileName("Users.xml") { loadData(); exit_name = L"Выход"; back_name = L"Назад"; }
+DataManager::DataManager() : Menu(L"ГЏГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГЁ"), fileName("Users.xml") { loadData(); exit_name = L"Г‚Г»ГµГ®Г¤"; back_name = L"ГЌГ Г§Г Г¤"; }
 
 void DataManager::display() const
 {
@@ -186,9 +187,9 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 
 			if (choice)
 			{
-				// Самая главная часть этого метода
+				// Г‘Г Г¬Г Гї ГЈГ«Г ГўГ­Г Гї Г·Г Г±ГІГј ГЅГІГ®ГЈГ® Г¬ГҐГІГ®Г¤Г 
 				/* 
-					Тут добавляются дополнительные варианты меню, к меню пользователей
+					Г’ГіГІ Г¤Г®ГЎГ ГўГ«ГїГѕГІГ±Гї Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­Г»ГҐ ГўГ Г°ГЁГ Г­ГІГ» Г¬ГҐГ­Гѕ, ГЄ Г¬ГҐГ­Гѕ ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГҐГ©
 				*/
 				Menu userMenu = *users[choice - 1];
 				userMenu.exit_name = back_name;
@@ -196,7 +197,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 				#undef max
 				if (auto user = dynamic_cast<Student*>(users[choice - 1]))
 				{
-					userMenu[L"Изменить"][L"Имя"] = [&]()
+					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"Г€Г¬Гї"] = [&]()
 					{
 
 						std::string newName;
@@ -209,7 +210,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 						SaveName(user->id, newName);
 						system("pause");
 					};
-					userMenu[L"Изменить"][L"Фамилию"] = [&]()
+					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"Г”Г Г¬ГЁГ«ГЁГѕ"] = [&]()
 					{
 						std::string newSurname;
 						std::cout << "Enter new Surname-> ";
@@ -220,7 +221,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 						SaveSurname(user->id, newSurname);
 						system("pause");
 					};
-					userMenu[L"Изменить"][L"Отчество"] = [&]()
+					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЋГІГ·ГҐГ±ГІГўГ®"] = [&]()
 					{
 						std::string newPatronymic;
 						std::cout << "Enter new Patronymic-> ";
@@ -231,7 +232,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 						SavePatronymic(user->id, newPatronymic);
 						system("pause");
 					};
-					userMenu[L"Изменить"][L"Адрес"] = [&]()
+					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЂГ¤Г°ГҐГ±"] = [&]()
 					{
 						std::string newAdress;
 						std::cout << "Enter new Adress-> ";
@@ -242,7 +243,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 						SaveAdress(user->id, newAdress);
 						system("pause");
 					};
-					userMenu[L"Изменить"][L"Номер Телефона"] = [&]()
+					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЌГ®Г¬ГҐГ° Г’ГҐГ«ГҐГґГ®Г­Г "] = [&]()
 					{
 						std::string newPhone;
 						std::cout << "Enter new Phone-> ";
@@ -253,7 +254,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 						SavePhone(user->id, newPhone);
 						system("pause");
 					};
-					userMenu[L"Изменить"][L"Логин"] = [&]()
+					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"Г‹Г®ГЈГЁГ­"] = [&]()
 					{
 						std::string newLogin;
 						std::cout << "Enter new Login-> ";
@@ -264,7 +265,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 						SaveLogin(user->id, newLogin);
 						system("pause");
 					};
-					userMenu[L"Изменить"][L"Пароль"] = [&]()
+					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЏГ Г°Г®Г«Гј"] = [&]()
 					{
 						std::string newPassword;
 						std::cout << "Enter new Password-> ";
@@ -275,7 +276,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 						SavePassword(user->id, newPassword);
 						system("pause");
 					};
-					userMenu[L"Удалить"] = [&]()
+					userMenu[L"Г“Г¤Г Г«ГЁГІГј"] = [&]()
 					{
 						deleteUserById(user->id);
 						userMenu.close();
@@ -283,7 +284,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 				}
 				else if (auto user = dynamic_cast<Admin*>(users[choice - 1]))
 				{
-					userMenu[L"Изменить"][L"Логин"] = [&]()
+					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"Г‹Г®ГЈГЁГ­"] = [&]()
 					{
 						std::string newLogin;
 						std::cout << "Enter new Login-> ";
@@ -294,7 +295,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 						SaveLogin(user->id, newLogin);
 						system("pause");
 					};
-					userMenu[L"Изменить"][L"Пароль"] = [&]()
+					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЏГ Г°Г®Г«Гј"] = [&]()
 					{
 						std::string newPassword;
 						std::cout << "Enter new Password-> ";

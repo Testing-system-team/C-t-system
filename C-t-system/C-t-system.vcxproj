@@ -32,6 +32,7 @@
     <ClCompile Include="src\Testing\category.cpp" />
     <ClCompile Include="src\Testing\question.cpp" />
     <ClCompile Include="src\Testing\test.cpp" />
+    <ClCompile Include="src\Testing\testManager.cpp" />
     <ClCompile Include="src\User-System\Admin.cpp" />
     <ClCompile Include="src\User-System\DataManager.cpp" />
     <ClCompile Include="src\User-System\Permissions.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="include\Testing\category.h" />
     <ClInclude Include="include\Testing\question.h" />
     <ClInclude Include="include\Testing\test.h" />
+    <ClInclude Include="include\Testing\testManager.h" />
     <ClInclude Include="include\User-System\Admin.h" />
     <ClInclude Include="include\User-System\DataManager.h" />
     <ClInclude Include="include\User-System\Permissions.h" />

@@ -8,7 +8,7 @@ namespace Testing
 	{
 		std::string name;
 		std::vector <question> questions;
-		int numOfQuestions;
+		
 		int result;
 		int mark;
 		double percentage;
@@ -16,7 +16,7 @@ namespace Testing
 
 		test();
 
-		test(std::string name, int numOfQuestions);
+		test(std::string name);
 
 		operator Menu();
 
@@ -29,10 +29,10 @@ namespace Testing
 
 
 		void displayResult();
-
+		operator pt::ptree();
 		int getResult();
 		int getMark();
-
+		std::string getname();
 		double getPercentage();
 		std::vector<question>& getQuestions();
 	};

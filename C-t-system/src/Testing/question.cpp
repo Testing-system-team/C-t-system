@@ -25,6 +25,11 @@ std::string question::getB()
 	return b;
 }
 
+std::string Testing::question::getData()
+{
+	return data;
+}
+
 std::string question::getC()
 {
 	return c;
@@ -38,4 +43,15 @@ void question::display()
 {
 	std::cout << "\n" << data << "\n";
 	std::cout << " a:" << a << " b:" << b << " c:" << c << "\n";
+}
+
+Testing::question::operator pt::ptree()
+{
+	pt::ptree questiontags;
+	questiontags.put("data", data);
+	questiontags.put("a", a);
+	questiontags.put("b", b);
+	questiontags.put("c", c);
+	questiontags.put("rightAnswer", rightAnswer);
+	return questiontags;
 }
