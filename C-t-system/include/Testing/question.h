@@ -17,14 +17,15 @@ namespace Testing
 		std::string getA();
 
 		std::string getB();
-
+		std::string getData();
 		std::string getC();
 		void setrightAnswer(std::string rightAnswer);
 		void display();
-
+		operator pt::ptree();
 		__declspec(property(get = getA)) std::string A;
 		__declspec(property(get = getB)) std::string B;
 		__declspec(property(get = getC)) std::string C;
+		__declspec(property(get = getData)) std::string Data;
 		__declspec(property(get = getrightAnswer, put = setrightAnswer)) std::string RightAnswer;
 	};
 }

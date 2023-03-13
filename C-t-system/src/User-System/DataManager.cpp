@@ -5,6 +5,7 @@
 #include "User-System/User_System.h"
 #include "Security/HMAC_Generator.h"
 
+
 using namespace User_System;
 
 DataManager::DataManager() : Menu(L"Пользователи"), fileName("Users.xml") { loadData(); exit_name = L"Выход"; back_name = L"Назад"; }
@@ -46,6 +47,8 @@ void DataManager::loadData()
 		catch (pt::ptree_bad_path) {}
 	}
 }
+
+
 
 bool DataManager::FindLogin(std::string login) const
 {
@@ -223,3 +226,5 @@ void User_System::DataManager::open(tstring tchoice)
 		}
 	}
 }
+
+

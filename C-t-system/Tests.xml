@@ -3,16 +3,148 @@
 	<Category>
 		<name>Математика</name>
 		<Tests>
-		    <test>
+			<test>
 				<name>Арифметика</name>
 				<questions>
 					<question>
-						<data> 2+2?</data>
-						<a>6</a>    <b>5</b>    <c>4</c>
-						<rightAnswer> 4</rightAnswer>
+						<data>2+2?</data>
+						<a>6</a>
+						<b>5</b>
+						<c>4</c>
+						<rightAnswer>4</rightAnswer>
+					</question>
+					<question>
+						<data>15+31?</data>
+						<a>46</a>
+						<b>47</b>
+						<c>80</c>
+						<rightAnswer>46</rightAnswer>
+					</question>
+					<question>
+						<data>120-60?</data>
+						<a>70</a>
+						<b>60</b>
+						<c>80</c>
+						<rightAnswer>60</rightAnswer>
+					</question>
+					<question>
+						<data>15+(10-5)?</data>
+						<a>25</a>
+						<b>20</b>
+						<c>30</c>
+						<rightAnswer>20</rightAnswer>
+					</question>
+					<question>
+						<data>800-450?</data>
+						<a>350</a>
+						<b>450</b>
+						<c>500</c>
+						<rightAnswer>350</rightAnswer>
+					</question>
+					<question>
+						<data>20/10?</data>
+						<a>10</a>
+						<b>2</b>
+						<c>4</c>
+						<rightAnswer>2</rightAnswer>
+					</question>
+					<question>
+						<data>10*10?</data>
+						<a>100</a>
+						<b>1000</b>
+						<c>10000</c>
+						<rightAnswer>100</rightAnswer>
+					</question>
+					<question>
+						<data>800/400?</data>
+						<a>20</a>
+						<b>200</b>
+						<c>2</c>
+						<rightAnswer>2</rightAnswer>
+					</question>
+					<question>
+						<data>1000*5?</data>
+						<a>5000</a>
+						<b>500</b>
+						<c>50000</c>
+						<rightAnswer>5000</rightAnswer>
+					</question>
+					<question>
+						<data>50+(100/2)?</data>
+						<a>75</a>
+						<b>150</b>
+						<c>100</c>
+						<rightAnswer>100</rightAnswer>
+					</question>
+					<question>
+						<data>500*500?</data>
+						<a>25000</a>
+						<b>250000</b>
+						<c>2500</c>
+						<rightAnswer>250000</rightAnswer>
+					</question>
+					<question>
+						<data>700+(400-200)+100?</data>
+						<a>900</a>
+						<b>1000</b>
+						<c>1500</c>
+						<rightAnswer>1000</rightAnswer>
 					</question>
 				</questions>
 			</test>
-		</Tests>	
+			<test>
+				<name>Вища математика</name>
+				<questions>
+					<question>
+						<data>1000/2?</data>
+						<a>500</a>
+						<b>400</b>
+						<c>700</c>
+						<rightAnswer>500</rightAnswer>
+					</question>
+				</questions>
+			</test>
+		</Tests>
+	</Category>
+	<Category>
+		<name>Географія</name>
+		<Tests>
+			<test>
+				<name>Столиці світу</name>
+				<questions>
+					<question>
+						<data>Столиця України?</data>
+						<a>Київ</a>
+						<b>Париж</b>
+						<c>Лондон</c>
+						<rightAnswer>Київ</rightAnswer>
+					</question>
+					<question>
+						<data>Столиця Англії</data>
+						<a>Лондон</a>
+						<b>Вашингтон</b>
+						<c>Париж</c>
+						<rightAnswer>Лондон</rightAnswer>
+					</question>
+				</questions>
+			</test>
+		</Tests>
+	</Category>
+	<Category>
+		<name>Фізика</name>
+		<Tests>
+			<test>
+				<name>Базова фізика</name>
+				<questions>
+					<question>
+						<data>Питання</data>
+						<a>відповідь</a>
+						<b>відповідь</b>
+						<c>відповідь</c>
+						<rightAnswer>відповідь</rightAnswer>
+					</question>
+				</questions>
+			</test>
+		</Tests>
 	</Category>
 </Categories>

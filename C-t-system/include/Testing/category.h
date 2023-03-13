@@ -12,5 +12,8 @@ namespace Testing
 		category(std::string name);
 		void display();
 		std::vector<test>& getTests();
+		void addtest(const test& t);
+		std::string getname();
+		operator pt::ptree();
 	};
 }

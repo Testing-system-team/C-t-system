@@ -3,19 +3,13 @@
 
 using namespace Testing;
 
-test::test() : name("-"), numOfQuestions(5), result(0), mark(0), percentage(0)
+test::test() : name("-"),result(0), mark(0), percentage(0)
 {
-	for (int i = 0; i < numOfQuestions; i++)
-	{
-		questions.push_back(question());
-	}
+
 }
-test::test(std::string name, int numOfQuestions) : name(name), numOfQuestions(numOfQuestions), result(0), mark(0), percentage(0)
+test::test(std::string name) : name(name),  result(0), mark(0), percentage(0)
 {
-	for (int i = 0; i < numOfQuestions; i++)
-	{
-		questions.push_back(question());
-	}
+
 }
 
 Testing::test::operator Menu()
@@ -55,6 +49,7 @@ void test::startTest()
 	}
 	else
 	{
+		display();
 		std::string answer;
 		char ans;
 		for (auto iter = questions.begin(); iter != questions.end(); iter++)
@@ -130,6 +125,21 @@ int test::getMark()
 	return mark;
 }
 
+std::string Testing::test::getname()
+{
+	return name;
+}
+
+Testing::test::operator pt::ptree()
+{
+	pt::ptree testtags;
+	testtags.put("name", name);
+	for (question& q : questions)
+	{
+		testtags.add_child("questions.question", q);
+	}
+	return testtags;
+}
 double test::getPercentage()
 {
 	return percentage;
