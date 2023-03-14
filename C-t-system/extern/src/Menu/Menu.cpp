@@ -1,6 +1,8 @@
 #include "Header.h"
 #include "Menu/Menu.h"
 
+#undef max
+
 #ifdef UNICODE
 	std::wostream& tMenu::tcout = std::wcout;
 	std::wistream& tMenu::tcin = std::wcin;
@@ -46,7 +48,7 @@ Menu::Menu(const tstring name, const function_type &dyn_function) : key(name), d
 
 Menu::Menu(const tstring name, std::vector<Menu> menu_list) : key(name), dyn_function(nullptr), menu_list({ Menu() }), back_key(_TEXT("Back"))
 {
-	for (auto iter = menu_list.begin() + 1;
+	for (auto iter = menu_list.begin();
 		iter != menu_list.end();
 		iter++)
 	{
@@ -59,6 +61,19 @@ Menu::Menu(const tstring name, std::vector<Menu> menu_list) : key(name), dyn_fun
 //
 // Ìועמהû begin ט end
 //
+
+std::vector<Menu>::iterator Menu::begin()
+{
+	if (menu_list.size())
+		return (menu_list.begin()) + 1;
+	else
+		return menu_list.begin();
+}
+
+std::vector<Menu>::iterator Menu::end()
+{
+	return menu_list.end();
+}
 
 std::vector<Menu>::const_iterator Menu::begin() const
 {
@@ -86,8 +101,8 @@ Menu& Menu::operator=(const function_type &dyn_function)
 Menu& Menu::operator=(const std::vector<Menu> menu_list)
 {
 	this->dyn_function = nullptr;
-	while (this->menu_list.size() > 1) this->menu_list.pop_back();
-	for (auto iter = menu_list.begin() + 1;
+	clear();
+	for (auto iter = menu_list.begin();
 		iter != menu_list.end();
 		iter++)
 	{
@@ -237,22 +252,29 @@ void Menu::open(const tstring tchoice)
 		tcout << '\n' << tchoice;
 
 		tcin >> choice;
+		tcin.ignore();
 		try
 		{
 			if (tcin.fail())
-				throw "Input fail";
+				throw std::ios_base::failure("Input fail");
 			else if (choice < 0 || choice >= menu_list.size())
-				throw "Wrong choice";
+				throw std::runtime_error("Wrong choice");
 		}
-		catch (const char* error)
+		catch (std::ios_base::failure& ex)
 		{
 			system("cls");
-			std::cerr << "> Error: " << error << "\n\n";
+			std::cerr << "> std::ios_base::failure: " << ex.what() << "\n\n";
 			system("pause");
 
 			tcin.clear();
-			tcin.ignore();
+			tcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			choice = -1;
+		}
+		catch (std::runtime_error& ex)
+		{
+			system("cls");
+			std::cerr << "> std::runtime_error: " << ex.what() << "\n\n";
+			system("pause");
 		}
 
 		#ifdef UNICODE
@@ -278,6 +300,12 @@ void Menu::open(const tstring tchoice)
 void Menu::close()
 {
 	exit = 1;
+}
+
+void Menu::clear()
+{
+	if (menu_list.size())
+		menu_list.erase(menu_list.begin() + 1, menu_list.end());
 }
 
 //
@@ -313,3 +341,8 @@ void Menu::rename_exit(const tstring name)
 tstring Menu::get_back_name() const { return back_key; }
 
 void Menu::rename_back(const tstring name) { back_key = name; }
+
+std::vector<Menu>& Menu::getMenuList()
+{
+	return menu_list;
+}

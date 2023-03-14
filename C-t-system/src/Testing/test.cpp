@@ -130,6 +130,11 @@ std::string Testing::test::getname()
 	return name;
 }
 
+void Testing::test::setName(const std::string name)
+{
+	this->name = name;
+}
+
 Testing::test::operator pt::ptree()
 {
 	pt::ptree testtags;

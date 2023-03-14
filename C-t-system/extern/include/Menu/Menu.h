@@ -20,7 +20,7 @@ class Menu
 protected:
 	//Тип указателя на функцию
 	typedef std::function<void()> function_type;
-private:
+
 	//
 	// Аттрибуты
 	//
@@ -36,7 +36,7 @@ private:
 
 	//Очистка от пустых меню
 	void _clean(Menu& iter);
-protected:
+
 	// Указывает, закрыто или открыто меню
 	bool exit;
 public:
@@ -50,6 +50,8 @@ public:
 	//
 	// Методы begin и end
 	//
+	std::vector<Menu>::iterator begin();
+	std::vector<Menu>::iterator end();
 	std::vector<Menu>::const_iterator begin() const;
 	std::vector<Menu>::const_iterator end() const;
 
@@ -94,6 +96,8 @@ public:
 
 	void close();
 
+	void clear();
+
 	//
 	// Геттеры/cеттеры
 	//
@@ -105,6 +109,8 @@ public:
 
 	tstring get_back_name() const;
 	void rename_back(const tstring back);
+
+	std::vector<Menu>& getMenuList();
 
 	//
 	// Декларация property

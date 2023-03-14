@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Statistics>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Математика</categoryName>
+		<testName>Арифметика</testName>
+		<questionsCount>12</questionsCount>
+		<result>12</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Фізика</categoryName>
+		<testName>Базова фізика</testName>
+		<questionsCount>1</questionsCount>
+		<result>1</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Фізика</categoryName>
+		<testName>Базова фізика</testName>
+		<questionsCount>1</questionsCount>
+		<result>1</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Фізика</categoryName>
+		<testName>Базова фізика</testName>
+		<questionsCount>1</questionsCount>
+		<result>1</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Фізика</categoryName>
+		<testName>Базова фізика</testName>
+		<questionsCount>1</questionsCount>
+		<result>1</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Фізика</categoryName>
+		<testName>Базова фізика</testName>
+		<questionsCount>1</questionsCount>
+		<result>1</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Фізика</categoryName>
+		<testName>Базова фізика</testName>
+		<questionsCount>1</questionsCount>
+		<result>1</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Фізика</categoryName>
+		<testName>Базова фізика</testName>
+		<questionsCount>1</questionsCount>
+		<result>1</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Фізика</categoryName>
+		<testName>Базова фізика</testName>
+		<questionsCount>1</questionsCount>
+		<result>1</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+	<statistic>
+		<userId>2</userId>
+		<categoryName>Фізика</categoryName>
+		<testName>Базова фізика</testName>
+		<questionsCount>1</questionsCount>
+		<result>1</result>
+		<percentage>100</percentage>
+		<mark>12</mark>
+	</statistic>
+</Statistics>

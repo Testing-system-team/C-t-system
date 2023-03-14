@@ -71,9 +71,30 @@ ID_System::ID<T>::ID(const int id)
 }
 
 template<class T>
+ID_System::ID<T>::ID(ID&& id)
+{
+	_typeName = typeid(T).name();
+	_id = id._id;
+	ID_map[id] = (ID_System::ID<void>*)this;
+
+	id._id = 0;
+}
+
+template<class T>
 ID_System::ID<T>::~ID()
 {
 	if (_id) ID_map.erase(_id);
+}
+
+template<class T>
+ID_System::ID<T>& ID_System::ID<T>::operator=(ID&& id)
+{
+	_typeName = typeid(T).name();
+	_id = id._id;
+	ID_map[id] = (ID_System::ID<void>*)this;
+
+	id._id = 0;
+	return *this;
 }
 
 template<class T>

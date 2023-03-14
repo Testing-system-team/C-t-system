@@ -60,6 +60,12 @@
     <Filter Include="Исходные файлы\Testing">
       <UniqueIdentifier>{930436da-6165-4594-9a4a-00c41454485a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Testing\Statistic">
+      <UniqueIdentifier>{8d6218e8-37a3-4a5a-84d0-a832d04d9c9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Testing\Statistic">
+      <UniqueIdentifier>{18c08d78-9e44-4ce0-862f-e8fe5d0ff924}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="extern\src\Menu\Menu.cpp">
@@ -67,6 +73,12 @@
     </ClCompile>
     <ClCompile Include="src\Testing\testManager.cpp">
       <Filter>Исходные файлы\Testing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Testing\Statistic\statisticManager.cpp">
+      <Filter>Исходные файлы\Testing\Statistic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Testing\Statistic\Statistic.cpp">
+      <Filter>Исходные файлы\Testing\Statistic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +182,12 @@
     </ClInclude>
     <ClInclude Include="include\Testing\testManager.h">
       <Filter>Файлы заголовков\Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Testing\Statistic\statisticManager.h">
+      <Filter>Файлы заголовков\Testing\Statistic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Testing\Statistic\Statistic.h">
+      <Filter>Файлы заголовков\Testing\Statistic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

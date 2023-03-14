@@ -33,6 +33,7 @@ namespace Testing
 		int getResult();
 		int getMark();
 		std::string getname();
+		void setName(const std::string name);
 		double getPercentage();
 		std::vector<question>& getQuestions();
 	};

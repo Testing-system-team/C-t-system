@@ -34,6 +34,22 @@ std::string question::getC()
 {
 	return c;
 }
+void Testing::question::setData(const std::string data)
+{
+	this->data = data;
+}
+void Testing::question::setA(const std::string a)
+{
+	this->a = a;
+}
+void Testing::question::setB(const std::string b)
+{
+	this->b = b;
+}
+void Testing::question::setC(const std::string c)
+{
+	this->c = c;
+}
 void question::setrightAnswer(std::string rightAnswer)
 {
 	this->rightAnswer = rightAnswer;

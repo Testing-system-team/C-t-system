@@ -1,6 +1,7 @@
 #pragma once
 #include "User-System/StudentList.h"
 #include "User-System/Admin.h"
+#include "Testing/Statistic/statisticManager.h"
 
 namespace User_System
 {
@@ -48,7 +49,7 @@ namespace User_System
 		std::unique_ptr<User_System::Admin>& getAdmin();
 
 		// Открывает меню (немного костыль)
-		void open(tstring tchoice = _TEXT("Ваш выбор: ")) noexcept override;
+		void open(Testing::Statistic::statisticManager* statisticManagerPtr, tstring tchoice = _TEXT("Ваш выбор: ")) noexcept;
 
 		void SaveName(int id, std::string newName);
 		void SaveSurname(int id, std::string newSurname);

@@ -63,13 +63,6 @@
 						<rightAnswer>2</rightAnswer>
 					</question>
 					<question>
-						<data>1000*5?</data>
-						<a>5000</a>
-						<b>500</b>
-						<c>50000</c>
-						<rightAnswer>5000</rightAnswer>
-					</question>
-					<question>
 						<data>50+(100/2)?</data>
 						<a>75</a>
 						<b>150</b>
