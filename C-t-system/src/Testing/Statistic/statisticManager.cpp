@@ -49,6 +49,7 @@ void Testing::Statistic::statisticManager::deleteUsersStatistics(const int userI
 	auto findFunc = [&]() { return std::find_if(statistics.begin(), statistics.end(), findCondition); };
 	for (auto statistic = findFunc(); statistic != statistics.end(); statistic = findFunc())
 		statistics.erase(statistic);
+	saveData();
 }
 
 std::vector<Testing::Statistic::Statistic>& Testing::Statistic::statisticManager::getStatistics()
