@@ -23,10 +23,21 @@ public:
 
 		// При 0 значении, ID не входит в систему
 		ID(const int id);
+
+		ID(const ID&) = delete;
+		ID(ID&& id);
 		// // //
 
 		// Деструктор
 		virtual ~ID();
+
+		//
+		// Операторы присвоения
+		//
+
+		void operator=(const ID&) = delete;
+		ID& operator=(ID&& id);
+		// // //
 
 		//
 		// Геттеры

@@ -3,13 +3,14 @@
 
 using namespace Testing;
 
-category::category(): name("-")
+category::category() : name("-")
 {
 }
 
-category::category(std::string name): name(name)
+category::category(std::string name) : name(name)
 {
 }
+
 category::operator pt::ptree()
 {
 	pt::ptree categorytags;
@@ -49,4 +50,9 @@ void Testing::category::addtest(const test& t)
 std::string Testing::category::getname()
 {
 	return name;
+}
+
+void Testing::category::setName(const std::string name)
+{
+	this->name = name;
 }

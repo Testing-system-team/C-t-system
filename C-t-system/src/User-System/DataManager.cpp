@@ -5,10 +5,9 @@
 #include "User-System/User_System.h"
 #include "Security/HMAC_Generator.h"
 
-
 using namespace User_System;
 
-DataManager::DataManager() : Menu(L"ГЏГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГЁ"), fileName("Users.xml") { loadData(); exit_name = L"Г‚Г»ГµГ®Г¤"; back_name = L"ГЌГ Г§Г Г¤"; }
+DataManager::DataManager() : Menu(L"Пользователи"), fileName("Users.xml") { loadData(); exit_name = L"Выход"; back_name = L"Назад"; }
 
 void DataManager::display() const
 {
@@ -70,7 +69,7 @@ bool DataManager::FindLogin(std::string login) const
 	}
 	catch (pt::ptree_bad_path) {}
 	return false;
-	
+
 }
 
 bool DataManager::CheckPassword(std::string password) const
@@ -119,7 +118,7 @@ void User_System::DataManager::deleteUserById(int id)
 		pt::read_xml(fileName, tree, pt::xml_parser::trim_whitespace);
 		users_tree = tree.get_child("Users");
 		tree.get_child("Users").erase(std::find_if(tree.get_child("Users").begin(), tree.get_child("Users").end(),
-			[id](std::pair<const std::string, pt::ptree> pair) 
+			[id](std::pair<const std::string, pt::ptree> pair)
 			{ return pair.second.get<int>("ID") == id; }));
 
 		studentCatalog.GetStudents().erase(result);
@@ -138,7 +137,7 @@ std::unique_ptr<User_System::Admin>& User_System::DataManager::getAdmin()
 	return admin;
 }
 
-void User_System::DataManager::open(tstring tchoice) noexcept
+void User_System::DataManager::open(Testing::Statistic::statisticManager* statisticManagerPtr, tstring tchoice) noexcept
 {
 	exit = 0;
 
@@ -172,6 +171,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 
 			<< tchoice;
 		tMenu::tcin >> choice;
+		tMenu::tcin.ignore();
 
 		#ifdef UNICODE
 		_setmode(_fileno(stdout), prev_out);
@@ -187,119 +187,110 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 
 			if (choice)
 			{
-				// Г‘Г Г¬Г Гї ГЈГ«Г ГўГ­Г Гї Г·Г Г±ГІГј ГЅГІГ®ГЈГ® Г¬ГҐГІГ®Г¤Г 
-				/* 
-					Г’ГіГІ Г¤Г®ГЎГ ГўГ«ГїГѕГІГ±Гї Г¤Г®ГЇГ®Г«Г­ГЁГІГҐГ«ГјГ­Г»ГҐ ГўГ Г°ГЁГ Г­ГІГ» Г¬ГҐГ­Гѕ, ГЄ Г¬ГҐГ­Гѕ ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«ГҐГ©
+				// Самая главная часть этого метода
+				/*
+					Тут добавляются дополнительные варианты меню, к меню пользователей
 				*/
 				Menu userMenu = *users[choice - 1];
 				userMenu.exit_name = back_name;
 				userMenu.back_name = back_name;
-				#undef max
 				if (auto user = dynamic_cast<Student*>(users[choice - 1]))
 				{
-					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"Г€Г¬Гї"] = [&]()
+					userMenu[L"Изменить"][L"Имя"] = [&]()
 					{
 
 						std::string newName;
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::cout << "Enter new Name-> ";
-						
+
 						std::getline(std::cin, newName);
 						user->ChangeName(newName);
-						
+
 						SaveName(user->id, newName);
 						system("pause");
 					};
-					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"Г”Г Г¬ГЁГ«ГЁГѕ"] = [&]()
+					userMenu[L"Изменить"][L"Фамилию"] = [&]()
 					{
 						std::string newSurname;
 						std::cout << "Enter new Surname-> ";
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newSurname);
 						user->ChangeSurname(newSurname);
 
 						SaveSurname(user->id, newSurname);
 						system("pause");
 					};
-					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЋГІГ·ГҐГ±ГІГўГ®"] = [&]()
+					userMenu[L"Изменить"][L"Отчество"] = [&]()
 					{
 						std::string newPatronymic;
 						std::cout << "Enter new Patronymic-> ";
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newPatronymic);
 						user->ChangePatronymic(newPatronymic);
 
 						SavePatronymic(user->id, newPatronymic);
 						system("pause");
 					};
-					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЂГ¤Г°ГҐГ±"] = [&]()
+					userMenu[L"Изменить"][L"Адрес"] = [&]()
 					{
 						std::string newAdress;
 						std::cout << "Enter new Adress-> ";
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newAdress);
 						user->ChangeAdress(newAdress);
-						
+
 						SaveAdress(user->id, newAdress);
 						system("pause");
 					};
-					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЌГ®Г¬ГҐГ° Г’ГҐГ«ГҐГґГ®Г­Г "] = [&]()
+					userMenu[L"Изменить"][L"Номер Телефона"] = [&]()
 					{
 						std::string newPhone;
 						std::cout << "Enter new Phone-> ";
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newPhone);
 						user->ChangePhone(newPhone);
 
 						SavePhone(user->id, newPhone);
 						system("pause");
 					};
-					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"Г‹Г®ГЈГЁГ­"] = [&]()
+					userMenu[L"Изменить"][L"Логин"] = [&]()
 					{
 						std::string newLogin;
 						std::cout << "Enter new Login-> ";
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newLogin);
 						user->ChangeLogin(newLogin);
 
 						SaveLogin(user->id, newLogin);
 						system("pause");
 					};
-					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЏГ Г°Г®Г«Гј"] = [&]()
+					userMenu[L"Изменить"][L"Пароль"] = [&]()
 					{
 						std::string newPassword;
 						std::cout << "Enter new Password-> ";
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newPassword);
 						user->ChangePassword(newPassword);
 
 						SavePassword(user->id, newPassword);
 						system("pause");
 					};
-					userMenu[L"Г“Г¤Г Г«ГЁГІГј"] = [&]()
+					userMenu[L"Удалить"] = [&]()
 					{
 						deleteUserById(user->id);
+						statisticManagerPtr->deleteUsersStatistics(user->id);
 						userMenu.close();
 					};
 				}
 				else if (auto user = dynamic_cast<Admin*>(users[choice - 1]))
 				{
-					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"Г‹Г®ГЈГЁГ­"] = [&]()
+					userMenu[L"Изменить"][L"Логин"] = [&]()
 					{
 						std::string newLogin;
 						std::cout << "Enter new Login-> ";
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newLogin);
 						user->login = newLogin;
 
 						SaveLogin(user->id, newLogin);
 						system("pause");
 					};
-					userMenu[L"Г€Г§Г¬ГҐГ­ГЁГІГј"][L"ГЏГ Г°Г®Г«Гј"] = [&]()
+					userMenu[L"Изменить"][L"Пароль"] = [&]()
 					{
 						std::string newPassword;
 						std::cout << "Enter new Password-> ";
-						std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\0');
 						std::getline(std::cin, newPassword);
 						user->password = newPassword;
 
@@ -307,8 +298,8 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 						system("pause");
 					};
 				}
-				
-				
+
+
 				userMenu.open(tchoice);
 				// // //
 			}
@@ -332,7 +323,7 @@ void User_System::DataManager::open(tstring tchoice) noexcept
 	}
 }
 
-void DataManager::SaveName(int id,std::string newName)
+void DataManager::SaveName(int id, std::string newName)
 {
 	pt::ptree tree;
 	pt::read_xml(fileName, tree, pt::xml_parser::trim_whitespace);
@@ -340,9 +331,9 @@ void DataManager::SaveName(int id,std::string newName)
 	BOOST_FOREACH(auto & user, tree.get_child("Users"))
 	{
 		int idXml = user.second.get<int>("ID");
-		if(idXml==id)
+		if (idXml == id)
 		{
-			
+
 			//tree.put("name" , newName);
 			user.second.put("name", newName);
 			//user.second.put_value("name", newName);
@@ -350,7 +341,7 @@ void DataManager::SaveName(int id,std::string newName)
 		}
 	}
 	write_xml(fileName, tree, std::locale(), settings);
-	
+
 }
 
 void User_System::DataManager::SaveSurname(int id, std::string newSurname)
@@ -446,7 +437,7 @@ void User_System::DataManager::SaveLogin(int id, std::string newLogin)
 				user.second.put("loginHash", Student::getLoginHashGen().generate_HMAC(newLogin));
 			else if (user.first == convertTypeName(typeid(Admin).name()))
 				user.second.put("loginHash", Admin::getLoginHashGen().generate_HMAC(newLogin));
-			
+
 			//user.second.put_value("name", newName);
 			break;
 		}
@@ -465,7 +456,7 @@ void User_System::DataManager::SavePassword(int id, std::string newPassword)
 		{
 
 			//tree.put("name" , newName);
-			
+
 			if (user.first == convertTypeName(typeid(Student).name()))
 				user.second.put("passwordHash", Student::getPassHashGen().generate_HMAC(newPassword));
 			else if (user.first == convertTypeName(typeid(Admin).name()))
