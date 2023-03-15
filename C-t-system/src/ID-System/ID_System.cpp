@@ -13,7 +13,7 @@ std::map<int, ID_System::ID<void>*>::const_iterator ID_System::end()
 	return ID_map.end();
 }
 
-int ID_System::size()
+size_t ID_System::size()
 {
 	return ID_map.size();
 }
